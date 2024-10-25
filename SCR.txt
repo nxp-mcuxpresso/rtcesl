@@ -1,0 +1,12 @@
+NXP Software Content Register
+
+Package: rtcesl
+Version: 4.8
+Outgoing License: LA_OPT_Online_Code_Hosting
+License File: LICENSE
+Type of content: object code & header files
+Description and comments: NXP Real Time Control Embedded Software Library.
+Release Location: https://github.com/nxp-mcuxpresso/rtcesl
+Origin:
+      NXP (Proprietary)
+

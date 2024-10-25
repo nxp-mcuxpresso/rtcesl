@@ -1,0 +1,49 @@
+menu "RTCESL"
+    config MCUX_COMPONENT_middleware.rtcesl.cm33nodsp
+        bool "cm33 (without DSP and FPU core)"
+        depends on MCUX_HW_CORE_CM33
+        depends on MCUX_HW_NO_FPU
+        help
+            Real Time Control Embedded Software Library for CM33 without DSP and FPU core.
+
+    config MCUX_COMPONENT_middleware.rtcesl.cm33f
+        bool "cm33f"
+        depends on MCUX_HW_CORE_CM33 || MCUX_HW_CORE_CM33F
+        depends on MCUX_HW_FPV5_DP || MCUX_HW_FPV5_SP || MCUX_HW_FPV4_SP
+        help
+            Real Time Control Embedded Software Library for CM33F core.
+
+    config MCUX_COMPONENT_middleware.rtcesl.cm7f
+        bool "cm7f"
+        depends on MCUX_HW_CORE_CM7 || MCUX_HW_CORE_CM7F
+        depends on MCUX_HW_FPV5_DP || MCUX_HW_FPV5_SP || MCUX_HW_FPV4_SP
+        help
+            Real Time Control Embedded Software Library for CM7F core.
+
+    config MCUX_COMPONENT_middleware.rtcesl.cm4f
+        bool "cm4f"
+        depends on MCUX_HW_CORE_CM4 || MCUX_HW_CORE_CM4F
+        depends on MCUX_HW_FPV5_DP || MCUX_HW_FPV5_SP || MCUX_HW_FPV4_SP
+        help
+            Real Time Control Embedded Software Library for CM4F core.
+
+    config MCUX_COMPONENT_middleware.rtcesl.cm0
+        bool "cm0"
+        depends on MCUX_HW_CORE_CM0P
+        depends on MCUX_HW_NO_FPU
+        help
+            Real Time Control Embedded Software Library for CM0 core.
+
+    config MCUX_COMPONENT_middleware.rtcesl.dsp56800ex
+        bool "56800EX"
+        depends on MCUX_HW_CORE_DSP56800EX
+        help
+          Real Time Control Embedded Software Library for 56800EX core from DSC device.
+
+    config MCUX_COMPONENT_middleware.rtcesl.dsp56800ef
+        bool "56800EF"
+        depends on MCUX_HW_CORE_DSP56800EF
+        help
+          Real Time Control Embedded Software Library for 56800EF core from DSC device.
+
+endmenu
