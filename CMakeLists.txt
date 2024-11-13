@@ -1,6 +1,6 @@
 # Middleware RTCESL cm33 (without DSP and FPU core)
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
 
     mcux_add_include(
         INCLUDES
@@ -599,7 +599,7 @@ endif()
 
 # RTCESL middleware code for cm33f core
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
 
     mcux_add_include(
         INCLUDES
@@ -1376,7 +1376,7 @@ endif()
 
 # RTCESL middleware code for cm7f core
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm7f)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
 
     mcux_add_include(
         INCLUDES
@@ -2131,7 +2131,7 @@ endif()
 
 # RTCESL middleware code for cm4f core
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm4f)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
 
     mcux_add_include(
         INCLUDES
@@ -2886,7 +2886,7 @@ endif()
 
 # RTCESL middleware code for cm0 core
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm0)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
 
     mcux_add_include(
         INCLUDES
@@ -3533,7 +3533,7 @@ endif()
 
 # RTCESL middleware code for dsp56800ex core
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.dsp56800ex)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
 
     mcux_add_include(
         INCLUDES
@@ -3720,7 +3720,7 @@ endif()
 
 # RTCESL middleware code for dsp56800ef core
 if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.dsp56800ef)
-    mcux_component_version(4.8.0)
+    mcux_component_version(4.8)
     
     mcux_add_include(
         INCLUDES
