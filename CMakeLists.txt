@@ -3806,7 +3806,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.dsp56800ef)
             DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Integrator_A32_Asm.h
             DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Integrator_A32_Asmi.h
             DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Integrator_FLT.h
-            DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Lmit_F16_Asm.h
+            DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Limit_F16_Asm.h
             DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Limit_F32_Asm.h
             DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_Limit_FLT.h
             DSP56800EF_RTCESL_4.8/GFLIB/Include/GFLIB_LowerLimit_FLT.h
