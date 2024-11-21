@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
-* Copyright 2013-2016 Freescale Semiconductor, Inc.
-* Copyright 2016-2024 NXP
+* Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
+* Copyright 2016-2021, 2024 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -29,8 +29,8 @@ extern "C" {
 /*******************************************************************************
 * RTCESL vesion 
 *******************************************************************************/  
-/* RTCESL version is 4.8 */  
-#define RTCESL_VERSION 4.8
+/* RTCESL version is 4.7 */  
+#define RTCESL_VERSION 4.7
 
 /* RAMFUNC macros */
 #if defined(__IAR_SYSTEMS_ICC__)
