@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
-* Copyright 2013-2016 Freescale Semiconductor, Inc.
-* Copyright 2016-2024 NXP
+* Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
+* Copyright 2016-2021, 2024 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -57,7 +57,7 @@ extern "C" {
 *           beta in the data structure GMCLIB_2COOR_ALBE_T_F16.
 *
 * @remarks: The GMCLIB_ElimDcBusRipFOC function compensates an amplitude
-*           of the direct-a and the quadrature-ß component of the
+*           of the direct-a and the quadrature-ï¿½ component of the
 *           stator-reference voltage vector in the fractional arithmetic by the
 *           formula shown in the following equations:
 *

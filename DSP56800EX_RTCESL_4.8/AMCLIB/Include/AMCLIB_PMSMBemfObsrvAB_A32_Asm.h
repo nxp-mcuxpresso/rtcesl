@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
-* Copyright 2013-2016 Freescale Semiconductor, Inc.
-* Copyright 2016-2024 NXP
+* Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
+* Copyright 2016-2019, 2024 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -50,10 +50,10 @@ extern "C" {
 ******************************************************************************/
 typedef struct
 {
-	//Extended BEMF – alpha/beta
+	//Extended BEMF ï¿½ alpha/beta
 	GMCLIB_2COOR_ALBE_T_F32 sEObsrv;				//0
 
-	//Accumulators – alpha/beta
+	//Accumulators ï¿½ alpha/beta
 	GMCLIB_2COOR_ALBE_T_F32 sIObsrv;				//4
 	
 	//Observer parameters for controllers
