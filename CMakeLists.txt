@@ -3693,17 +3693,17 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.dsp56800ex)
         CORES dsp56800ex
     )
 
-#    mcux_add_library(
-#        LIBS
-#            DSP56800EX_RTCESL_4.8/AMCLIB/AMCLIB_LDM.lib
-#            DSP56800EX_RTCESL_4.8/GMCLIB/GMCLIB_LDM.lib
-#            DSP56800EX_RTCESL_4.8/GFLIB/GFLIB_LDM.lib
-#            DSP56800EX_RTCESL_4.8/GDFLIB/GDFLIB_LDM.lib
-#            DSP56800EX_RTCESL_4.8/MLIB/MLIB_LDM.lib
-#        TOOLCHAINS codewarrior
-#        CORES dsp56800ex
-#        TARGETS flash_ldm_lpm_debug flash_ldm_lpm_release
-#    )
+    mcux_add_library(
+        LIBS
+            DSP56800EX_RTCESL_4.8/AMCLIB/AMCLIB_LDM.lib
+            DSP56800EX_RTCESL_4.8/GMCLIB/GMCLIB_LDM.lib
+            DSP56800EX_RTCESL_4.8/GFLIB/GFLIB_LDM.lib
+            DSP56800EX_RTCESL_4.8/GDFLIB/GDFLIB_LDM.lib
+            DSP56800EX_RTCESL_4.8/MLIB/MLIB_LDM.lib
+        TOOLCHAINS codewarrior
+        CORES dsp56800ex
+        TARGETS flash_ldm_lpm_debug flash_ldm_lpm_release
+    )
 
     mcux_add_library(
         LIBS
