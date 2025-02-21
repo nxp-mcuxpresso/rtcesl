@@ -144,6 +144,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_A32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_F16.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -318,6 +319,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_A32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_F16.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -492,6 +494,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_A32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_F16.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -799,6 +802,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F32.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MAU.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_A32.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_F16_Asmi.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_F32.h
@@ -1032,6 +1036,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F32.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MAU.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_A32.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_F16_Asmi.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_F32.h
@@ -1265,6 +1270,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F32.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MAU.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_A32.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_F16_Asmi.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_F32.h
