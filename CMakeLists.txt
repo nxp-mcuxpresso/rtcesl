@@ -85,10 +85,13 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Ramp_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCos_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCosPQ_F32.h
+            CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCosMAU_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Sqrt_F16.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Sqrt_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtPQ_F16.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtPQ_F32.h
+            CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtMAU_F16.h
+            CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtMAU_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Tan_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/gflib_types.h
             CM33NODSP_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_UpperLimit_F16.h
@@ -144,7 +147,6 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
-	    CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_A32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_F16.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -187,6 +189,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Neg_F32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Neg_F32_Asmi.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_PQ.h
+	        CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Rcp_A32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Rcp1Q_A32.h
             CM33NODSP_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Rnd_F32.h
@@ -260,10 +263,13 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Ramp_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCos_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCosPQ_F32.h
+            CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCosMAU_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Sqrt_F16.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Sqrt_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtPQ_F16.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtPQ_F32.h
+            CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtMAU_F16.h
+            CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtMAU_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Tan_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/gflib_types.h
             CM33NODSP_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_UpperLimit_F16.h
@@ -319,7 +325,6 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
-	    CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_A32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_F16.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -362,6 +367,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Neg_F32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Neg_F32_Asmi.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_PQ.h
+	        CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Rcp_A32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Rcp1Q_A32.h
             CM33NODSP_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Rnd_F32.h
@@ -435,10 +441,13 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Ramp_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCos_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCosPQ_F32.h
+            CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCosMAU_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Sqrt_F16.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Sqrt_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtPQ_F16.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtPQ_F32.h
+            CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtMAU_F16.h
+            CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtMAU_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Tan_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/gflib_types.h
             CM33NODSP_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_UpperLimit_F16.h
@@ -494,7 +503,6 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
-	    CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_A32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_F16.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -537,6 +545,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33nodsp)
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Neg_F32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Neg_F32_Asmi.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_PQ.h
+	        CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MAU.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Rcp_A32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Rcp1Q_A32.h
             CM33NODSP_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Rnd_F32.h
@@ -655,6 +664,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/AMCLIB_PMSMBemfObsrvAB_FLT.h
             CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQ_A32.h
             CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQ_FLT.h
+            CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQMAU_FLT.h
             CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/AMCLIB_TrackObsrv_F32.h
             CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/AMCLIB_TrackObsrv_FLT.h
             CM33F_RTCESL_4.8.1_IAR/AMCLIB/Include/amclib_types.h
@@ -684,6 +694,8 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Atan_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_AtanYX_F16.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_AtanYXPQ_F16.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_AtanMAU_FLT.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_AtanYXMAU_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_AtanYX_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_CtrlBetaIPDp_A32.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_CtrlBetaIPDp_FLT.h
@@ -724,12 +736,17 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Ramp_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCos_F32.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCosPQ_F32.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCosMAU_F32.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCos_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCosPQ_FLT.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SinCosMAU_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Sqrt_F16.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Sqrt_F32.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtPQ_F16.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtPQ_F32.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtMAU_F16.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtMAU_F32.h
+            CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_SqrtMAU_FLT.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Sqrt_FLT_Asmi.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Tan_F32.h
             CM33F_RTCESL_4.8.1_IAR/GFLIB/Include/GFLIB_Tan_FLT.h
@@ -756,6 +773,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/asm_mac.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/mlib.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_PQ.h
+            CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_MAU.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Abs_F16.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Abs_F16_Asmi.h
             CM33F_RTCESL_4.8.1_IAR/MLIB/Include/MLIB_Abs_F32.h
@@ -889,6 +907,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/AMCLIB_PMSMBemfObsrvAB_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQ_A32.h
             CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQ_FLT.h
+            CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQMAU_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/AMCLIB_TrackObsrv_F32.h
             CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/AMCLIB_TrackObsrv_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/AMCLIB/Include/amclib_types.h
@@ -916,9 +935,11 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Asin_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Atan_F32.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Atan_FLT.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_AtanMAU_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_AtanYX_F16.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_AtanYXPQ_F16.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_AtanYX_FLT.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_AtanYXMAU_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_CtrlBetaIPDp_A32.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_CtrlBetaIPDp_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_CtrlBetaIPp_A32.h
@@ -958,12 +979,17 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Ramp_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCos_F32.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCosPQ_F32.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCosMAU_F32.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCos_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCosPQ_FLT.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SinCosMAU_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Sqrt_F16.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Sqrt_F32.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtPQ_F16.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtPQ_F32.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtMAU_F16.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtMAU_F32.h
+            CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_SqrtMAU_FLT.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Sqrt_FLT_Asmi.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Tan_F32.h
             CM33F_RTCESL_4.8.1_KEIL/GFLIB/Include/GFLIB_Tan_FLT.h
@@ -990,6 +1016,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/asm_mac.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/mlib.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_PQ.h
+            CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_MAU.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Abs_F16.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Abs_F16_Asmi.h
             CM33F_RTCESL_4.8.1_KEIL/MLIB/Include/MLIB_Abs_F32.h
@@ -1123,6 +1150,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/AMCLIB_PMSMBemfObsrvAB_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQ_A32.h
             CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQ_FLT.h
+            CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/AMCLIB_PMSMBemfObsrvDQMAU_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/AMCLIB_TrackObsrv_F32.h
             CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/AMCLIB_TrackObsrv_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/AMCLIB/Include/amclib_types.h
@@ -1151,7 +1179,9 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Atan_F32.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Atan_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_AtanYX_F16.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_AtanMAU_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_AtanYXPQ_F16.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_AtanYXMAU_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_AtanYX_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_CtrlBetaIPDp_A32.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_CtrlBetaIPDp_FLT.h
@@ -1192,12 +1222,17 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Ramp_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCos_F32.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCosPQ_F32.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCosMAU_F32.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCos_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCosPQ_FLT.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SinCosMAU_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Sqrt_F16.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Sqrt_F32.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtPQ_F16.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtPQ_F32.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtMAU_F16.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtMAU_F32.h
+            CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_SqrtMAU_FLT.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Sqrt_FLT_Asmi.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Tan_F32.h
             CM33F_RTCESL_4.8.1_MCUX/GFLIB/Include/GFLIB_Tan_FLT.h
@@ -1224,6 +1259,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm33f)
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/asm_mac.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/mlib.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_PQ.h
+            CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_MAU.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Abs_F16.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Abs_F16_Asmi.h
             CM33F_RTCESL_4.8.1_MCUX/MLIB/Include/MLIB_Abs_F32.h
