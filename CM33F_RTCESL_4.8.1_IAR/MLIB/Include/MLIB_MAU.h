@@ -52,7 +52,8 @@ extern "C" {
 #define RTCESL_MAU_REG_Q31(addr)    (*((volatile frac32_t *)(addr)))
 #define RTCESL_MAU_REG_FLOAT(addr)  (*((volatile  float_t *)(addr)))   
   
-#if defined(RTCESL_MAU_INDIRECT_IS_LOW_ADDR0) && (RTCESL_MAU_INDIRECT_IS_LOW_ADDR0 == 1U)
+
+#if defined(RTCESL_MAU_INDIRECT_IS_LOW_ADDR0)
   
     #define RTCESL_MAU_IND_ADDR(base, dt, ds, mopc) ((base) | RTCESL_MAU_DT_SET(dt) | \
                                                      RTCESL_MAU_RES_SET(ds) | RTCESL_MAU_MOPC_SET(mopc))

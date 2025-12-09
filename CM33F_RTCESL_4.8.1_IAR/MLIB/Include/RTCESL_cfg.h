@@ -31,12 +31,11 @@ extern "C" {
 /* RTCESL version is 4.8.1 */  
 #define RTCESL_VERSION 4.8.1
 
-  
 /*******************************************************************************
 * Macros 
 *******************************************************************************/  
 #define RTCESL_ON 1
-#define RTCESL_OFF 0    
+#define RTCESL_OFF 0 
     
 /*******************************************************************************
 * User Modified Macros 
@@ -81,6 +80,9 @@ extern "C" {
     /* User option to enable or disable MAU module when IDE preprocessor setting 
     *  was not used. Set the following define as RTCESL_ON or RTCESL_OFF to enable or  
     *  disable hardware MAU support. */  
+
+    /* Specifically for the MCXA344 device (with a different MAU module), it is necessary to define
+    *  RTCESL_MAU_INDIRECT_IS_LOW_ADDR0 macro. If it is not defined, a Hard Fault exception occurs. */
     
     /* Next line can be modified by user */
     #define RTCESL_MAU RTCESL_OFF   
