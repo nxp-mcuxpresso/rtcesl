@@ -35,7 +35,7 @@ extern "C" {
 * Macros 
 *******************************************************************************/  
 #define RTCESL_ON 1
-#define RTCESL_OFF 0 
+#define RTCESL_OFF 0
     
 /*******************************************************************************
 * User Modified Macros 
@@ -81,8 +81,9 @@ extern "C" {
     *  was not used. Set the following define as RTCESL_ON or RTCESL_OFF to enable or  
     *  disable hardware MAU support. */  
 
-    /* Specifically for the MCXA344 device (with a different MAU module), it is necessary to define
-    *  RTCESL_MAU_INDIRECT_IS_LOW_ADDR0 macro. If it is not defined, a Hard Fault exception occurs. */
+    /* Some devices for example MCXA344 or MCXA343 with different MAU module type require to define
+    *  the RTCESL_MAU_INDIRECT_IS_LOW_ADDR0 define. User shall verify the MAU module type and
+    *  its register from Reference Manual. If it is not defined a HardFault exception occurs. */
     
     /* Next line can be modified by user */
     #define RTCESL_MAU RTCESL_OFF   
