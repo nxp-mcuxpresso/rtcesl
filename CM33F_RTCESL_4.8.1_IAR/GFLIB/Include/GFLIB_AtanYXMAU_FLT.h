@@ -54,7 +54,7 @@ extern "C" {
 *
 * @param     in  r0 - fltY in the range of [-1,1).
 *                r1 - fltX in the range of [-1,1).
-*                r3 - u8ResReg - MAU result register.
+*                r2 - u8ResReg - MAU result register.
 *
 * @return    The function returns
 *                r0 - AtanYX(fltY,fltX).The output data value
