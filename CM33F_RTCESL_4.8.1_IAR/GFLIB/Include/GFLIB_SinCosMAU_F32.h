@@ -43,7 +43,8 @@ extern "C" {
 /***************************************************************************//*!
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
-* @param  in   frac16_t f16Angle - Argument in frac16_t range 
+* @param  in   frac16_t f16Angle - Argument in frac16_t range
+*              uint8_t ui8ResReg0 - MAU result register
 *
 * @return This function returns - frac16_t value 
 *       
@@ -70,7 +71,8 @@ static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register
 /***************************************************************************//*!
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
-* @param  in   float_t frac16_t - Argument in frac16_t range 
+* @param  in   float_t frac16_t - Argument in frac16_t range
+*              uint8_t ui8ResReg0 - MAU result register 
 *
 * @return This function returns - frac16_t value 
 *       

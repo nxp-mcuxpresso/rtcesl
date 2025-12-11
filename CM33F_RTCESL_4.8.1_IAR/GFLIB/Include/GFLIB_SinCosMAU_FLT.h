@@ -45,7 +45,8 @@ extern "C" {
 /***************************************************************************//*!
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
-* @param  in   float_t fltAngle - Argument in float_t range 
+* @param  in   float_t fltAngle - Argument in float_t range
+*              uint8_t ui8ResReg0 - MAU result register 
 *
 * @return This function returns - float_t value 
 *       
@@ -74,7 +75,8 @@ static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register u
 /***************************************************************************//*!
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
-* @param  in   float_t fltAngle - Argument in float_t range 
+* @param  in   float_t fltAngle - Argument in float_t range
+*              uint8_t ui8ResReg0 - MAU result register 
 *
 * @return This function returns - float_t value 
 *       
@@ -104,7 +106,8 @@ static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register u
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
 * @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
-*                                  of which corresponds to [-pi; pi 
+*                                  of which corresponds to [-pi; pi)
+*              uint8_t ui8ResReg0 - MAU result register 
 *
 * @return This function returns - float_t value 
 *       
@@ -137,7 +140,8 @@ static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
 * @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
-*                                  of which corresponds to [-pi; pi
+*                                  of which corresponds to [-pi; pi)
+*              uint8_t ui8ResReg0 - MAU result register
 *
 * @return This function returns - float_t value 
 *       

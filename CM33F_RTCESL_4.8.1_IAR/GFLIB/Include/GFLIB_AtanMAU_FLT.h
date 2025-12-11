@@ -52,7 +52,8 @@ extern "C" {
 * @param    ptr  *psParam - Pointer to the table
 *
 * @param    in   fltVal - The input data value is 32-bit single precision 
-*                         floating-point value within the full type's range.                       
+*                         floating-point value within the full type's range.
+                 ui8ResReg0 - MAU result register 
 *
 * @return   The function returns arctangent of the input as a 32-bit single
 *           precision floating-point value in radians.              

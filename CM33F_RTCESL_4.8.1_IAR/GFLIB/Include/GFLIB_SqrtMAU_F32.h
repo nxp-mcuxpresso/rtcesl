@@ -45,6 +45,7 @@ extern "C" {
 * @brief  Calculates the square root of the argument by Math Accelerator Unit.
 *
 * @param    in   frac16_t f16Val - Argument in <0;1) in frac16_t
+*                uint8_t ui8ResReg0 - MAU result register
 *
 * @return   This function returns - frac16_t value <0;1)
 *       

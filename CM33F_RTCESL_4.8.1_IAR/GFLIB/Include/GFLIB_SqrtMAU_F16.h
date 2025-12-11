@@ -46,6 +46,7 @@ extern "C" {
 *
 * @param    ptr  GFLIB_SQRT_TABLE_T_F32 *psParam - Pointer to the polynomial table 
 * @param    in   frac32_t f32Val - Argument in <0;1) in frac32_t
+*                uint8_t ui8ResReg0 - MAU result register
 *
 * @return This function returns - frac16_t value <0;1)
 *		
