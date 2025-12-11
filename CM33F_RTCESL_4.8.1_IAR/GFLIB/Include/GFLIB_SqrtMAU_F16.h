@@ -34,7 +34,7 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/
-#define GFLIB_SqrtMAU_F16_Ci(f16Val) GFLIB_SqrtMAU_F16_FCi(f16Val)
+#define GFLIB_SqrtMAU_F16_Ci(f16Val, ui8ResReg0) GFLIB_SqrtMAU_F16_FCi(f16Val, ui8ResReg0)
   
 /****************************************************************************
 * Inline functions 
@@ -54,7 +54,7 @@ extern "C" {
 *		If the value is negative the function returns zero value.
 *
 ****************************************************************************/
-static inline frac16_t GFLIB_SqrtMAU_F16_FCi(register frac16_t f16Val)
+static inline frac16_t GFLIB_SqrtMAU_F16_FCi(register frac16_t f16Val, register uint8_t ui8ResReg0)
 {
     register frac16_t f16Temp;
     register uint32_t addr;
@@ -66,7 +66,7 @@ static inline frac16_t GFLIB_SqrtMAU_F16_FCi(register frac16_t f16Val)
         #pragma GCC diagnostic ignored "-Wstrict-aliasing"
         #endif
         
-        addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, 3, RTCESL_MAU_MOPC_SQRT);
+        addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, ui8ResReg0, RTCESL_MAU_MOPC_SQRT);
         RTCESL_MAU_REG_Q15(addr) = f16Val;
         f16Temp = RTCESL_MAU_RES3;        
 	    
