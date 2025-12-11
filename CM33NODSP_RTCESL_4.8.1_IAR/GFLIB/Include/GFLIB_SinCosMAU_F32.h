@@ -33,8 +33,8 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/
-#define GFLIB_SinMAU_F16_Ci(f16Angle, ui8ResReg0)               GFLIB_SinMAU_F16_FCi(f16Angle, ui8ResReg0)
-#define GFLIB_CosMAU_F16_Ci(f16Angle, ui8ResReg0)               GFLIB_CosMAU_F16_FCi(f16Angle, ui8ResReg0)
+#define GFLIB_SinMAU_F16_Ci(f16Angle, ui8ResReg)               GFLIB_SinMAU_F16_FCi(f16Angle, ui8ResReg)
+#define GFLIB_CosMAU_F16_Ci(f16Angle, ui8ResReg)               GFLIB_CosMAU_F16_FCi(f16Angle, ui8ResReg)
 #define GFLIB_SinCosMAU_F16_Ci(f16Angle, f16SinCos, ui8ResReg0, ui8ResReg1) GFLIB_SinCosMAU_F16_FCi(f16Angle, f16SinCos, ui8ResReg0, ui8ResReg1)
 /****************************************************************************
 * Inline functions 
@@ -44,7 +44,7 @@ extern "C" {
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
 * @param  in   frac16_t f16Angle - Argument in frac16_t range
-*              uint8_t ui8ResReg0 - MAU result register
+*              uint8_t ui8ResReg - MAU result register
 *
 * @return This function returns - frac16_t value 
 *       
@@ -52,14 +52,14 @@ extern "C" {
 *   This function calculates sin(x) using MAU module:
 *
 *******************************************************************************/
-static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register uint8_t ui8ResReg0)
+static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register uint8_t ui8ResReg)
 {
     #if defined(__GNUC__)
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
     
-    register uint32_t addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, ui8ResReg0, RTCESL_MAU_MOPC_SIN);
+    register uint32_t addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, ui8ResReg, RTCESL_MAU_MOPC_SIN);
     RTCESL_MAU_REG_Q15(addr) = f16Angle;
     return ((RTCESL_MAU_RES0))>>0;
     
@@ -72,7 +72,7 @@ static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
 * @param  in   float_t frac16_t - Argument in frac16_t range
-*              uint8_t ui8ResReg0 - MAU result register 
+*              uint8_t ui8ResReg - MAU result register 
 *
 * @return This function returns - frac16_t value 
 *       
@@ -80,14 +80,14 @@ static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register
 *   This function calculates cos(x) using MAU module:
 *
 *******************************************************************************/ 
-static inline frac16_t GFLIB_CosMAU_F16_FCi(register frac16_t f16Angle, register uint8_t ui8ResReg0)
+static inline frac16_t GFLIB_CosMAU_F16_FCi(register frac16_t f16Angle, register uint8_t ui8ResReg)
 {
     #if defined(__GNUC__)
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
 
-    register uint32_t addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, ui8ResReg0, RTCESL_MAU_MOPC_COS);
+    register uint32_t addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, ui8ResReg, RTCESL_MAU_MOPC_COS);
     RTCESL_MAU_REG_Q15(addr) = f16Angle;
     return (RTCESL_MAU_RES1);    
 	

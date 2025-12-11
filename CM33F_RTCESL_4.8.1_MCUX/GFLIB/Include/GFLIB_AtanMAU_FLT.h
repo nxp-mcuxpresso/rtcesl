@@ -38,8 +38,8 @@ extern "C" {
 /******************************************************************************
 * Macros 
 ******************************************************************************/                         
-#define GFLIB_AtanMAU_FLT_Ci(fltVal, ui8ResReg0)                                          \
-        GFLIB_AtanMAU_FLT_FCi(fltVal, ui8ResReg0)
+#define GFLIB_AtanMAU_FLT_Ci(fltVal, ui8ResReg)                                          \
+        GFLIB_AtanMAU_FLT_FCi(fltVal, ui8ResReg)
 
 /****************************************************************************
 * Inline functions 
@@ -53,7 +53,7 @@ extern "C" {
 *
 * @param    in   fltVal - The input data value is 32-bit single precision 
 *                         floating-point value within the full type's range.
-                 ui8ResReg0 - MAU result register 
+                 ui8ResReg - MAU result register 
 *
 * @return   The function returns arctangent of the input as a 32-bit single
 *           precision floating-point value in radians.              
@@ -62,7 +62,7 @@ extern "C" {
 *            using MAU module.
 *
 *******************************************************************************/
-static inline float_t GFLIB_AtanMAU_FLT_FCi(register float_t fltVal, register uint8_t ui8ResReg0)
+static inline float_t GFLIB_AtanMAU_FLT_FCi(register float_t fltVal, register uint8_t ui8ResReg)
 {
     register uint32_t addr;
     
@@ -71,7 +71,7 @@ static inline float_t GFLIB_AtanMAU_FLT_FCi(register float_t fltVal, register ui
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
 
-    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg0, RTCESL_MAU_MOPC_ATAN);
+    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg, RTCESL_MAU_MOPC_ATAN);
     RTCESL_MAU_REG_FLOAT(addr) = fltVal;
     return (RTCESL_MAU_REG_FLOAT((uint32_t)(RTCESL_MAU_RES2_ADDR))*FLOAT_PI);
 	

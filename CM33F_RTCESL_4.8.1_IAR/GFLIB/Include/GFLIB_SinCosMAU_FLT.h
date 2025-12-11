@@ -32,10 +32,10 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/
-#define GFLIB_SinMAU_FLT_Ci(fltAngle, ui8ResReg0)                   GFLIB_SinMAU_FLT_FCi(fltAngle, ui8ResReg0)
-#define GFLIB_SinMAU_FLTa_Ci(fltAngle, ui8ResReg0)                  GFLIB_SinMAU_FLTa_FCi(fltAngle, ui8ResReg0)
-#define GFLIB_CosMAU_FLT_Ci(fltAngle, ui8ResReg0)                   GFLIB_CosMAU_FLT_FCi(fltAngle, ui8ResReg0)
-#define GFLIB_CosMAU_FLTa_Ci(fltAngle, ui8ResReg0)                  GFLIB_CosMAU_FLTa_FCi(fltAngle, ui8ResReg0)
+#define GFLIB_SinMAU_FLT_Ci(fltAngle, ui8ResReg)                   GFLIB_SinMAU_FLT_FCi(fltAngle, ui8ResReg)
+#define GFLIB_SinMAU_FLTa_Ci(fltAngle, ui8ResReg)                  GFLIB_SinMAU_FLTa_FCi(fltAngle, ui8ResReg)
+#define GFLIB_CosMAU_FLT_Ci(fltAngle, ui8ResReg)                   GFLIB_CosMAU_FLT_FCi(fltAngle, ui8ResReg)
+#define GFLIB_CosMAU_FLTa_Ci(fltAngle, ui8ResReg)                  GFLIB_CosMAU_FLTa_FCi(fltAngle, ui8ResReg)
 #define GFLIB_SinCosMAU_FLTa_Ci(a32AngleExt, fltSinCos, ui8ResReg0, ui8ResReg1) GFLIB_SinCosMAU_FLTa_FCi(a32AngleExt, fltSinCos, ui8ResReg0, ui8ResReg1)
 
 /****************************************************************************
@@ -46,7 +46,7 @@ extern "C" {
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
 * @param  in   float_t fltAngle - Argument in float_t range
-*              uint8_t ui8ResReg0 - MAU result register 
+*              uint8_t ui8ResReg - MAU result register 
 *
 * @return This function returns - float_t value 
 *       
@@ -54,7 +54,7 @@ extern "C" {
 *   This function calculates sin(x) using MAU module:
 *
 *******************************************************************************/
-static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register uint8_t ui8ResReg0)
+static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register uint8_t ui8ResReg)
 {
     register uint32_t addr;
 
@@ -63,7 +63,7 @@ static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register u
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
 	
-    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg0, RTCESL_MAU_MOPC_SIN);
+    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg, RTCESL_MAU_MOPC_SIN);
     RTCESL_MAU_REG_FLOAT(addr) = fltAngle  / FLOAT_PI;
     return RTCESL_MAU_REG_FLOAT((uint32_t)(RTCESL_MAU_RES0_ADDR));
 	
@@ -76,7 +76,7 @@ static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register u
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
 * @param  in   float_t fltAngle - Argument in float_t range
-*              uint8_t ui8ResReg0 - MAU result register 
+*              uint8_t ui8ResReg - MAU result register 
 *
 * @return This function returns - float_t value 
 *       
@@ -84,7 +84,7 @@ static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register u
 *   This function calculates cos(x) using MAU module:
 *
 **************************************************************/                                                         
-static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register uint8_t ui8ResReg0)
+static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register uint8_t ui8ResReg)
 {
     register uint32_t addr;
     
@@ -93,7 +93,7 @@ static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register u
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
 	
-    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg0, RTCESL_MAU_MOPC_COS);
+    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg, RTCESL_MAU_MOPC_COS);
     RTCESL_MAU_REG_FLOAT(addr)  = fltAngle / FLOAT_PI;;
     return RTCESL_MAU_REG_FLOAT((uint32_t)(RTCESL_MAU_RES1_ADDR));
 	
@@ -107,7 +107,7 @@ static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register u
 *
 * @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
 *                                  of which corresponds to [-pi; pi)
-*              uint8_t ui8ResReg0 - MAU result register 
+*              uint8_t ui8ResReg - MAU result register 
 *
 * @return This function returns - float_t value 
 *       
@@ -116,7 +116,7 @@ static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register u
 *   x = fractional part of a32AngleExt * pi / 2^15
 *
 *******************************************************************************/
-static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, register uint8_t ui8ResReg0)
+static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, register uint8_t ui8ResReg)
 {
     register uint32_t addr;
     register float_t fltTemp;    
@@ -127,7 +127,7 @@ static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
 	
-    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg0, RTCESL_MAU_MOPC_SIN);
+    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg, RTCESL_MAU_MOPC_SIN);
     RTCESL_MAU_REG_FLOAT(addr) = fltTemp;
     return RTCESL_MAU_REG_FLOAT((uint32_t)(RTCESL_MAU_RES0_ADDR));
 	
@@ -141,7 +141,7 @@ static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
 *
 * @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
 *                                  of which corresponds to [-pi; pi)
-*              uint8_t ui8ResReg0 - MAU result register
+*              uint8_t ui8ResReg - MAU result register
 *
 * @return This function returns - float_t value 
 *       
@@ -150,7 +150,7 @@ static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
 *   x = fractional part of a32AngleExt * pi / 2^15
 *
 **************************************************************/                                                         
-static inline float_t GFLIB_CosMAU_FLTa_FCi(register acc32_t a32AngleExt, register uint8_t ui8ResReg0)
+static inline float_t GFLIB_CosMAU_FLTa_FCi(register acc32_t a32AngleExt, register uint8_t ui8ResReg)
 {
     register uint32_t addr;
     register float_t fltTemp;    
@@ -161,7 +161,7 @@ static inline float_t GFLIB_CosMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
     #pragma GCC diagnostic ignored "-Wstrict-aliasing"
     #endif
 	
-    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg0, RTCESL_MAU_MOPC_COS);
+    addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, ui8ResReg, RTCESL_MAU_MOPC_COS);
     RTCESL_MAU_REG_FLOAT(addr) = fltTemp;
     return RTCESL_MAU_REG_FLOAT((uint32_t)(RTCESL_MAU_RES1_ADDR));
 	
