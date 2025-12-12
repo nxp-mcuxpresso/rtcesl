@@ -69,7 +69,7 @@ static inline frac16_t GFLIB_SqrtMAU_F16_FCi(register frac16_t f16Val, register 
         
         addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, u8ResReg, RTCESL_MAU_MOPC_SQRT);
         RTCESL_MAU_REG_Q15(addr) = f16Val;
-        f16Temp = RTCESL_MAU_RES3;        
+        f16Temp = rtcesl_mau_res_table[u8ResReg].res_addr;        
 	    
         #if defined(__GNUC__)
         #pragma GCC diagnostic pop

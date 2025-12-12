@@ -61,7 +61,7 @@ static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register
     
     register uint32_t addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, u8ResReg, RTCESL_MAU_MOPC_SIN);
     RTCESL_MAU_REG_Q15(addr) = f16Angle;
-    return ((RTCESL_MAU_RES0))>>0;
+    return ((*(volatile uint32_t*)(rtcesl_mau_res_table[u8ResReg].res_addr)))>>0;
     
     #if defined(__GNUC__)
     #pragma GCC diagnostic pop
@@ -89,7 +89,7 @@ static inline frac16_t GFLIB_CosMAU_F16_FCi(register frac16_t f16Angle, register
 
     register uint32_t addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, u8ResReg, RTCESL_MAU_MOPC_COS);
     RTCESL_MAU_REG_Q15(addr) = f16Angle;
-    return (RTCESL_MAU_RES1);    
+    return (*(volatile uint32_t*)(rtcesl_mau_res_table[u8ResReg].res_addr));    
 	
     #if defined(__GNUC__)
     #pragma GCC diagnostic pop
@@ -113,8 +113,8 @@ static inline void GFLIB_SinCosMAU_F16_FCi(register frac16_t f16Angle, GMCLIB_2C
     addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_Q1X, u8ResRegCos, RTCESL_MAU_MOPC_COS);
     RTCESL_MAU_REG_Q15(addr) = f16Angle;
     
-    f16SinCos->f16Sin = RTCESL_MAU_RES0;
-    f16SinCos->f16Cos = RTCESL_MAU_RES1; 
+    f16SinCos->f16Sin = (*(volatile uint32_t*)(rtcesl_mau_res_table[u8ResRegSin].res_addr));
+    f16SinCos->f16Cos = (*(volatile uint32_t*)(rtcesl_mau_res_table[u8ResRegCos].res_addr)); 
     
     #if defined(__GNUC__)
     #pragma GCC diagnostic pop

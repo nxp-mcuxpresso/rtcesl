@@ -73,7 +73,7 @@ static inline float_t GFLIB_AtanMAU_FLT_FCi(register float_t fltVal, register ui
 
     addr = RTCESL_MAU_IND_ADDR((uint32_t)RTCESL_MAU_BASE_PTR, RTCESL_MAU_DT_FLOAT, u8ResReg, RTCESL_MAU_MOPC_ATAN);
     RTCESL_MAU_REG_FLOAT(addr) = fltVal;
-    return (RTCESL_MAU_REG_FLOAT((uint32_t)(RTCESL_MAU_RES2_ADDR))*FLOAT_PI);
+    return (RTCESL_MAU_REG_FLOAT((uint32_t)(rtcesl_mau_res_table[u8ResReg].res_addr))*FLOAT_PI);
 	
     #if defined(__GNUC__)
     #pragma GCC diagnostic pop

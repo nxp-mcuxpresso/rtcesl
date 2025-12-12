@@ -36,6 +36,12 @@ extern "C" {
 /* ----------------------------------------------------------------------------
    -- MAU Peripheral Access Layer
    ---------------------------------------------------------------------------- */
+
+/* Result register address structure */
+typedef struct {
+    uint32_t res_addr;
+} RTCESL_MAU_RES_t;
+  
 /* Base address of Math Accelerator Unit(MAU) */ 
 #define RTCESL_MAU_BASE_PTR     0x40108000U 
 /** Peripheral MRCC0 base address */
@@ -51,7 +57,6 @@ extern "C" {
 #define RTCESL_MAU_REG_Q15(addr)    (*((volatile frac16_t *)(addr)))
 #define RTCESL_MAU_REG_Q31(addr)    (*((volatile frac32_t *)(addr)))
 #define RTCESL_MAU_REG_FLOAT(addr)  (*((volatile  float_t *)(addr)))   
-  
 
 #if defined(RTCESL_MAU_INDIRECT_IS_LOW_ADDR0)
   
@@ -116,6 +121,17 @@ extern "C" {
 #define RTCESL_MAU_MOPC_COS        8U
 #define RTCESL_MAU_MOPC_SIN        9U
 #define RTCESL_MAU_MOPC_ATAN       12
+
+/* Result register table definition */
+#define RTCESL_MAU_RES_DATA {\
+        {RTCESL_MAU_RES0_ADDR},\
+        {RTCESL_MAU_RES1_ADDR},\
+        {RTCESL_MAU_RES2_ADDR},\
+        {RTCESL_MAU_RES3_ADDR}\
+}
+
+/* Initialize structure array */
+static const RTCESL_MAU_RES_t rtcesl_mau_res_table[4] = RTCESL_MAU_RES_DATA;
     
 /*******************************************************************************
 * Types
