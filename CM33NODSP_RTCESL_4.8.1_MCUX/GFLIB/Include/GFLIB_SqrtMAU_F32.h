@@ -44,8 +44,9 @@ extern "C" {
 /***************************************************************************//*!
 * @brief  Calculates the square root of the argument by Math Accelerator Unit.
 *
-* @param    in   frac16_t f16Val - Argument in <0;1) in frac16_t
-*                uint8_t u8ResReg - MAU result register
+* @param    in   frac32_t f32Val - Argument in <0;1) in frac32_t
+*                uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                   Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return   This function returns - frac16_t value <0;1)
 *       

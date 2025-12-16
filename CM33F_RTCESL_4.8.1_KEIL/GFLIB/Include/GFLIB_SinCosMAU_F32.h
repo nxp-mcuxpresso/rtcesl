@@ -44,7 +44,8 @@ extern "C" {
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
 * @param  in   frac16_t f16Angle - Argument in frac16_t range
-*              uint8_t u8ResReg - MAU result register
+*               uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                  Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return This function returns - frac16_t value 
 *       
@@ -71,8 +72,9 @@ static inline frac16_t GFLIB_SinMAU_F16_FCi(register frac16_t f16Angle, register
 /***************************************************************************//*!
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
-* @param  in   float_t frac16_t - Argument in frac16_t range
-*              uint8_t u8ResReg - MAU result register 
+* @param  in   frac16_t f16Angle - Argument in frac16_t range
+*              uint8_t u8ResReg  - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                  Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return This function returns - frac16_t value 
 *       
@@ -96,9 +98,26 @@ static inline frac16_t GFLIB_CosMAU_F16_FCi(register frac16_t f16Angle, register
     #endif
 }
 
-/*******************************************************************************
-* Sine and cosine functions
-*******************************************************************************/
+/***************************************************************************//*!
+* @brief  Calculates the sine and cosine of the given argument using Math Accelerator Unit.
+*
+* @param  in   frac16_t f16Angle   - Argument in frac16_t range
+*               
+*              GMCLIB_2COOR_SINCOS_T_F16 *f16SinCos - pointer to structure where the values of sine and cosine are stored
+*
+*              uint8_t u8ResRegSin - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                    Any value outside this range will trigger a CPU HardFault exception.
+*                                    Shall be different from Cos result register for valid SinCos result.
+*              uint8_t u8ResRegCos - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                    Any value outside this range will trigger a CPU HardFault exception.
+*                                    Shall be different from Sin result register for valid SinCos result.
+*
+* @return This function returns - frac16_t value 
+*       
+* @remarks  
+*   This function calculates cos(x) using MAU module:
+*
+*******************************************************************************/ 
 static inline void GFLIB_SinCosMAU_F16_FCi(register frac16_t f16Angle, GMCLIB_2COOR_SINCOS_T_F16 *f16SinCos, register uint8_t u8ResRegSin, register uint8_t u8ResRegCos)
 {   
     register uint32_t addr;

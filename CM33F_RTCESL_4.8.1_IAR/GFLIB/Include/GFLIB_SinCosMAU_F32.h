@@ -107,8 +107,10 @@ static inline frac16_t GFLIB_CosMAU_F16_FCi(register frac16_t f16Angle, register
 *
 *              uint8_t u8ResRegSin - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
 *                                    Any value outside this range will trigger a CPU HardFault exception.
+*                                    Shall be different from Cos result register for valid SinCos result.
 *              uint8_t u8ResRegCos - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
 *                                    Any value outside this range will trigger a CPU HardFault exception.
+*                                    Shall be different from Sin result register for valid SinCos result.
 *
 * @return This function returns - frac16_t value 
 *       

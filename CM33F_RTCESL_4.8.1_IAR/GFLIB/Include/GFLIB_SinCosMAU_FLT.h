@@ -184,8 +184,10 @@ static inline float_t GFLIB_CosMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
 *
 *              uint8_t u8ResRegSin - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
 *                                    Any value outside this range will trigger a CPU HardFault exception.
+*                                    Shall be different from Cos result register for valid SinCos result.
 *              uint8_t u8ResRegCos - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
 *                                    Any value outside this range will trigger a CPU HardFault exception.
+*                                    Shall be different from Sin result register for valid SinCos result.
 *
 * @return This function returns - float_t value 
 *       
