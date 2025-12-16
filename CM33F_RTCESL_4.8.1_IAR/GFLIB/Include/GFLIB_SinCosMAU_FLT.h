@@ -46,7 +46,8 @@ extern "C" {
 * @brief  Calculates the sine of the given argument using Math Accelerator Unit.
 *
 * @param  in   float_t fltAngle - Argument in float_t range
-*              uint8_t u8ResReg - MAU result register 
+*              uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                 Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return This function returns - float_t value 
 *       
@@ -76,7 +77,8 @@ static inline float_t GFLIB_SinMAU_FLT_FCi(register float_t fltAngle, register u
 * @brief  Calculates the cosine of the given argument using Math Accelerator Unit.
 *
 * @param  in   float_t fltAngle - Argument in float_t range
-*              uint8_t u8ResReg - MAU result register 
+*              uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                 Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return This function returns - float_t value 
 *       
@@ -107,7 +109,8 @@ static inline float_t GFLIB_CosMAU_FLT_FCi(register float_t fltAngle, register u
 *
 * @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
 *                                  of which corresponds to [-pi; pi)
-*              uint8_t u8ResReg - MAU result register 
+*              uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                 Any value outside this range will trigger a CPU HardFault exception. 
 *
 * @return This function returns - float_t value 
 *       
@@ -141,7 +144,8 @@ static inline float_t GFLIB_SinMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
 *
 * @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
 *                                  of which corresponds to [-pi; pi)
-*              uint8_t u8ResReg - MAU result register
+*               uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                  Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return This function returns - float_t value 
 *       
@@ -170,9 +174,25 @@ static inline float_t GFLIB_CosMAU_FLTa_FCi(register acc32_t a32AngleExt, regist
     #endif	
 } 
 
-/*******************************************************************************
-* Sine and cosine functions
-*******************************************************************************/
+/***************************************************************************//*!
+* @brief  Calculates the sine and cosine of the given argument using Math Accelerator Unit.
+*
+* @param  in   acc32 a32AngleExt - Argument in range in acc32_t, fractional part 
+*                                  of which corresponds to [-pi; pi)
+*               
+*              GMCLIB_2COOR_SINCOS_T_FLT *fltSinCos - pointer to structure where the values of sine and cosine are stored
+*
+*              uint8_t u8ResRegSin - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                    Any value outside this range will trigger a CPU HardFault exception.
+*              uint8_t u8ResRegCos - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                    Any value outside this range will trigger a CPU HardFault exception.
+*
+* @return This function returns - float_t value 
+*       
+* @remarks  
+*   This function calculates sin(x) and cos(x) using MAU module.
+*
+*******************************************************************************/ 
 static inline void GFLIB_SinCosMAU_FLTa_FCi(register acc32_t a32AngleExt, GMCLIB_2COOR_SINCOS_T_FLT *fltSinCos, register uint8_t u8ResRegSin, register uint8_t u8ResRegCos)
 {   
     register uint32_t addr;

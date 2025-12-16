@@ -51,15 +51,15 @@ extern "C" {
 *
 * @param    ptr  *psParam - Pointer to the table
 *
-* @param    in   fltVal - The input data value is 32-bit single precision 
-*                         floating-point value within the full type's range.
-                 u8ResReg - MAU result register 
+* @param    in   float_t fltVal - The input data value is 32-bit single precision 
+*                                 floating-point value within the full type's range.
+*                uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                   Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return   The function returns arctangent of the input as a 32-bit single
 *           precision floating-point value in radians.              
 *       
-* @remarks  The GFLIB_Atan function computes the atan(x)/pi
-*            using MAU module.
+* @remarks  The GFLIB_Atan function computes the atan(x)/pi using MAU module.
 *
 *******************************************************************************/
 static inline float_t GFLIB_AtanMAU_FLT_FCi(register float_t fltVal, register uint8_t u8ResReg)

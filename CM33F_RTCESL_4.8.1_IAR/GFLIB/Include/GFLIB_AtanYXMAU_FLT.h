@@ -54,7 +54,8 @@ extern "C" {
 *
 * @param     in  r0 - fltY in the range of [-1,1).
 *                r1 - fltX in the range of [-1,1).
-*                r2 - u8ResReg - MAU result register.
+*                r2 - uint8_t u8ResReg - MAU result register. Valid parameter values are {1, 2, 3, 4}. 
+*                                        Any value outside this range will trigger a CPU HardFault exception.
 *
 * @return    The function returns
 *                r0 - AtanYX(fltY,fltX).The output data value
