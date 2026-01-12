@@ -27,6 +27,13 @@ menu "RTCESL"
         help
             Real Time Control Embedded Software Library for CM4F core.
 
+    config MCUX_COMPONENT_middleware.rtcesl.cm23
+        bool "cm23"
+        depends on MCUX_HW_CORE_CM23
+        depends on MCUX_HW_NO_FPU
+        help
+            Real Time Control Embedded Software Library for CM23 core.
+
     config MCUX_COMPONENT_middleware.rtcesl.cm0
         bool "cm0"
         depends on MCUX_HW_CORE_CM0P
