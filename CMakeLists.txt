@@ -2938,7 +2938,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_MCUX/GMCLIB/Include
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include
         TOOLCHAINS iar
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_include(
@@ -2949,7 +2949,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_KEIL/GMCLIB/Include
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include
         TOOLCHAINS mdk
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_include(
@@ -2960,7 +2960,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_MCUX/GMCLIB/Include
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include
         TOOLCHAINS mcux armgcc
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_source(
@@ -3140,7 +3140,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_IAR/PCLIB/Include/PCLIB_CtrlPID_F16.h
             CM23_RTCESL_4.9.0_IAR/PCLIB/Include/pclib_types.h
         TOOLCHAINS iar
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_source(
@@ -3320,7 +3320,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_KEIL/PCLIB/Include/PCLIB_CtrlPID_F16.h
             CM23_RTCESL_4.9.0_KEIL/PCLIB/Include/pclib_types.h
         TOOLCHAINS mdk
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_source(
@@ -3500,40 +3500,40 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_MCUX/PCLIB/Include/PCLIB_CtrlPID_F16.h
             CM23_RTCESL_4.9.0_MCUX/PCLIB/Include/pclib_types.h
         TOOLCHAINS mcux armgcc
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_library(
         LIBS
-            CM0_RTCESL_4.8.1_IAR/AMCLIB/AMCLIB.a
-            CM0_RTCESL_4.8.1_IAR/GFLIB/GFLIB.a
-            CM0_RTCESL_4.8.1_IAR/GDFLIB/GDFLIB.a
-            CM0_RTCESL_4.8.1_IAR/GMCLIB/GMCLIB.a
-            CM0_RTCESL_4.8.1_IAR/MLIB/MLIB.a
+            CM23_RTCESL_4.9.0_IAR/AMCLIB/AMCLIB.a
+            CM23_RTCESL_4.9.0_IAR/GFLIB/GFLIB.a
+            CM23_RTCESL_4.9.0_IAR/GDFLIB/GDFLIB.a
+            CM23_RTCESL_4.9.0_IAR/GMCLIB/GMCLIB.a
+            CM23_RTCESL_4.9.0_IAR/MLIB/MLIB.a
         TOOLCHAINS iar
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_library(
         LIBS
-            CM0_RTCESL_4.8.1_KEIL/AMCLIB/AMCLIB.lib
-            CM0_RTCESL_4.8.1_KEIL/GFLIB/GFLIB.lib
-            CM0_RTCESL_4.8.1_KEIL/GDFLIB/GDFLIB.lib
-            CM0_RTCESL_4.8.1_KEIL/GMCLIB/GMCLIB.lib
-            CM0_RTCESL_4.8.1_KEIL/MLIB/MLIB.lib
+            CM23_RTCESL_4.9.0_KEIL/AMCLIB/AMCLIB.lib
+            CM23_RTCESL_4.9.0_KEIL/GFLIB/GFLIB.lib
+            CM23_RTCESL_4.9.0_KEIL/GDFLIB/GDFLIB.lib
+            CM23_RTCESL_4.9.0_KEIL/GMCLIB/GMCLIB.lib
+            CM23_RTCESL_4.9.0_KEIL/MLIB/MLIB.lib
         TOOLCHAINS mdk
-        CORES cm0p
+        CORES cm23
     )
 
     mcux_add_library(
         LIBS
-            CM0_RTCESL_4.8.1_MCUX/AMCLIB/libAMCLIB.a
-            CM0_RTCESL_4.8.1_MCUX/GFLIB/libGFLIB.a
-            CM0_RTCESL_4.8.1_MCUX/GDFLIB/libGDFLIB.a
-            CM0_RTCESL_4.8.1_MCUX/GMCLIB/libGMCLIB.a
-            CM0_RTCESL_4.8.1_MCUX/MLIB/libMLIB.a
+            CM23_RTCESL_4.9.0_MCUX/AMCLIB/libAMCLIB.a
+            CM23_RTCESL_4.9.0_MCUX/GFLIB/libGFLIB.a
+            CM23_RTCESL_4.9.0_MCUX/GDFLIB/libGDFLIB.a
+            CM23_RTCESL_4.9.0_MCUX/GMCLIB/libGMCLIB.a
+            CM23_RTCESL_4.9.0_MCUX/MLIB/libMLIB.a
         TOOLCHAINS mcux armgcc
-        CORES cm0p
+        CORES cm23
     )
 endif()
 
