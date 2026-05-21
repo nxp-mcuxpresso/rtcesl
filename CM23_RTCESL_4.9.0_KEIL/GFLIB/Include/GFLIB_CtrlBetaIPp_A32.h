@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -36,6 +36,8 @@ extern "C" {
 *******************************************************************************/
 #define GFLIB_CtrlBetaIPpAW_F16_C(f16InReq, f16In, pbStopIntegFlag, psParam)    \
         GFLIB_CtrlBetaIPpAW_F16_FC(f16InReq, f16In, pbStopIntegFlag, psParam)    
+#define GFLIB_CtrlBetaIPpAW_F16_CRam(f16InReq, f16In, pbStopIntegFlag, psParam) \
+        GFLIB_CtrlBetaIPpAW_F16_FCRam(f16InReq, f16In, pbStopIntegFlag, psParam)    
 #define GFLIB_CtrlBetaIPpAWInit_F16_Ci(f16InitVal, psParam)                     \
         GFLIB_CtrlBetaIPpAWInit_F16_FCi(f16InitVal, psParam)
     
@@ -61,6 +63,10 @@ typedef struct
 extern frac16_t GFLIB_CtrlBetaIPpAW_F16_FC(frac16_t f16InReq, frac16_t f16In,
                                            const bool_t *pbStopIntegFlag, 
                                            GFLIB_CTRL_BETA_IP_P_AW_T_A32 *psParam);
+RAM_FUNC_LIB 
+extern frac16_t GFLIB_CtrlBetaIPpAW_F16_FCRam(frac16_t f16InReq, frac16_t f16In,
+                                              const bool_t *pbStopIntegFlag, 
+                                              GFLIB_CTRL_BETA_IP_P_AW_T_A32 *psParam);
 
 /***************************************************************************//*!
 * @brief    The function initializes the actual values of CtrlBetaIPpAWInit controller.
@@ -71,8 +77,9 @@ extern frac16_t GFLIB_CtrlBetaIPpAW_F16_FC(frac16_t f16InReq, frac16_t f16In,
 * @return   N/A
 * 
 *******************************************************************************/
-static inline void GFLIB_CtrlBetaIPpAWInit_F16_FCi(frac16_t f16InitVal, 
-                                                   GFLIB_CTRL_BETA_IP_P_AW_T_A32 *psParam)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GFLIB_CtrlBetaIPpAWInit_F16_FCi(frac16_t f16InitVal, 
+                                                                 GFLIB_CTRL_BETA_IP_P_AW_T_A32 *psParam)
 {
     psParam -> f32IAccK_1 = MLIB_Conv_F32s(f16InitVal);
     psParam->f16InErrK_1 = (frac16_t)0;

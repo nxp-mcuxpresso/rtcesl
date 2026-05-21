@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -38,6 +38,8 @@ extern "C" {
         GFLIB_DRampInit_F32_FCi(f32InitVal, psParam)                                   
 #define GFLIB_DRamp_F32_Asm(f32Target, f32Instant, pbStopFlag, psParam)        \
         GFLIB_DRamp_F32_FAsm(f32Target, f32Instant, pbStopFlag, psParam)
+#define GFLIB_DRamp_F32_AsmRam(f32Target, f32Instant, pbStopFlag, psParam)     \
+        GFLIB_DRamp_F32_FAsmRam(f32Target, f32Instant, pbStopFlag, psParam)
 
 /*******************************************************************************
 * Types
@@ -66,7 +68,8 @@ typedef struct
 * @remarks  The initialization value is stored into the psParam->f32State and the
 *           bReachFlag flag is cleared.
 *******************************************************************************/
-static inline void GFLIB_DRampInit_F32_FCi(frac32_t f32InitVal, GFLIB_DRAMP_T_F32 *psParam)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GFLIB_DRampInit_F32_FCi(frac32_t f32InitVal, GFLIB_DRAMP_T_F32 *psParam)
 {
     psParam->f32State = f32InitVal;
     psParam->bReachFlag = (bool_t)0;
@@ -77,6 +80,9 @@ static inline void GFLIB_DRampInit_F32_FCi(frac32_t f32InitVal, GFLIB_DRAMP_T_F3
 *******************************************************************************/
 extern frac32_t GFLIB_DRamp_F32_FAsm(frac32_t f32Target, frac32_t f32Instant, 
                                      const bool_t *pbStopFlag, GFLIB_DRAMP_T_F32 *psParam);
+RAM_FUNC_LIB 
+extern frac32_t GFLIB_DRamp_F32_FAsmRam(frac32_t f32Target, frac32_t f32Instant, 
+                                        const bool_t *pbStopFlag, GFLIB_DRAMP_T_F32 *psParam);
 
 #if defined(__cplusplus)
 }

@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -39,10 +39,30 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/ 
-#define GMCLIB_Clark_F16(psIn, psOut)                                               \
-        GMCLIB_Clark_F16_Asmi(psIn, psOut)
-#define GMCLIB_ClarkInv_F16(psIn, psOut)                                            \
-        GMCLIB_ClarkInv_F16_Asmi(psIn, psOut)
+#if (defined(RAM_RELOCATION)) /* placed to RAM */
+#define GMCLIB_DecouplingPMSM_F16(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)      \
+        GMCLIB_DecouplingPMSM_F16_AsmRam(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)
+#define GMCLIB_DTCompLut1D_F16(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp)   \
+        GMCLIB_DTCompLut1D_F16_CRam(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp)
+#define GMCLIB_ElimDcBusRip_F16sas(f16UDCBus, a32IdxMod, psUAlBe, psUAlBeComp)      \
+        GMCLIB_ElimDcBusRip_F16sas_AsmRam(f16UDCBus, a32IdxMod, psUAlBe, psUAlBeComp)
+#define GMCLIB_ElimDcBusRipFOC_F16(f16UDCBus, psUAlBe, psUAlBeComp)                 \
+        GMCLIB_ElimDcBusRipFOC_F16_AsmRam(f16UDCBus, psUAlBe, psUAlBeComp)            
+#define GMCLIB_SvmIct_F16(psIn, psOut)                                              \
+        GMCLIB_SvmIct_F16_CRam(psIn, psOut)
+#define GMCLIB_SvmStd_F16(psIn, psOut)                                              \
+        GMCLIB_SvmStd_F16_AsmRam(psIn, psOut)
+#define GMCLIB_SvmStdShifted_F16(psIn, param, psCfgPWM, psCfgMeas)                  \
+        GMCLIB_SvmStdShifted_F16Ram(psIn, param, psCfgPWM, psCfgMeas)
+#define GMCLIB_SvmU0n_F16(psIn, psOut)                                              \
+        GMCLIB_SvmU0n_F16_CRam(psIn, psOut)
+#define GMCLIB_SvmU7n_F16(psIn, psOut)                                              \
+        GMCLIB_SvmU7n_F16_CRam(psIn, psOut)
+#define GMCLIB_SvmDpwm_F16(psIn, psOut)                                             \
+        GMCLIB_SvmDpwm_F16_CRam(psIn, psOut)
+#define GMCLIB_SvmExDpwm_F16(psIn, psAngle, psOut)                                  \
+        GMCLIB_SvmExDpwm_F16_CRam(psIn, psAngle,psOut)   
+#else
 #define GMCLIB_DecouplingPMSM_F16(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)      \
         GMCLIB_DecouplingPMSM_F16_Asm(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)
 #define GMCLIB_DTCompLut1D_F16(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp)   \
@@ -51,10 +71,6 @@ extern "C" {
         GMCLIB_ElimDcBusRip_F16sas_Asm(f16UDCBus, a32IdxMod, psUAlBe, psUAlBeComp)
 #define GMCLIB_ElimDcBusRipFOC_F16(f16UDCBus, psUAlBe, psUAlBeComp)                 \
         GMCLIB_ElimDcBusRipFOC_F16_Asm(f16UDCBus, psUAlBe, psUAlBeComp)            
-#define GMCLIB_Park_F16(psIn, psAnglePos, psOut)                                    \
-        GMCLIB_Park_F16_Asmi(psIn, psAnglePos, psOut)
-#define GMCLIB_ParkInv_F16(psIn, psAnglePos, psOut)                                 \
-        GMCLIB_ParkInv_F16_Asmi(psIn, psAnglePos, psOut)
 #define GMCLIB_SvmIct_F16(psIn, psOut)                                              \
         GMCLIB_SvmIct_F16_C(psIn, psOut)
 #define GMCLIB_SvmStd_F16(psIn, psOut)                                              \
@@ -69,7 +85,16 @@ extern "C" {
         GMCLIB_SvmDpwm_F16_C(psIn, psOut)
 #define GMCLIB_SvmExDpwm_F16(psIn, psAngle, psOut)                                  \
         GMCLIB_SvmExDpwm_F16_C(psIn, psAngle,psOut)           
-            
+#endif
+#define GMCLIB_Clark_F16(psIn, psOut)                                               \
+        GMCLIB_Clark_F16_Asmi(psIn, psOut)
+#define GMCLIB_ClarkInv_F16(psIn, psOut)                                            \
+        GMCLIB_ClarkInv_F16_Asmi(psIn, psOut)
+#define GMCLIB_Park_F16(psIn, psAnglePos, psOut)                                    \
+        GMCLIB_Park_F16_Asmi(psIn, psAnglePos, psOut)
+#define GMCLIB_ParkInv_F16(psIn, psAnglePos, psOut)                                 \
+        GMCLIB_ParkInv_F16_Asmi(psIn, psAnglePos, psOut)
+
 #if defined(__cplusplus) 
 }
 #endif 

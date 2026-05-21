@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -67,7 +67,8 @@ typedef struct
 * @param  in    frac16_t f16InitVal - Initial value
 *
 *******************************************************************************/
-static inline void GFLIB_IntegratorInit_F16_FCi(register frac16_t f16InitVal, 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GFLIB_IntegratorInit_F16_FCi(register frac16_t f16InitVal, 
                                                 register GFLIB_INTEGRATOR_T_A32 *psParam)
 {
     psParam->f32IAccK_1 = MLIB_Conv_F32s(f16InitVal); /* Stores the integral portion */
@@ -101,7 +102,8 @@ static inline void GFLIB_IntegratorInit_F16_FCi(register frac16_t f16InitVal,
 *          output = (frac16_t)f32IAccK_1
 * 
 *******************************************************************************/
-static inline frac16_t GFLIB_Integrator_F16_FCi(register frac16_t f16InVal, register GFLIB_INTEGRATOR_T_A32 *psParam)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t GFLIB_Integrator_F16_FCi(register frac16_t f16InVal, register GFLIB_INTEGRATOR_T_A32 *psParam)
 {
     register acc32_t a32Temp;
     register frac32_t f32Temp;

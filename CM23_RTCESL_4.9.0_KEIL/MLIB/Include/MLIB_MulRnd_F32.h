@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -44,7 +44,8 @@ extern "C" {
 * f32Out = f32Mult1 * f16Mult2
 * Without saturation
 *******************************************************************************/
-static inline frac32_t MLIB_MulRnd_F32ls_FCi(register frac32_t f32Mult1, register frac16_t f16Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_MulRnd_F32ls_FCi(register frac32_t f32Mult1, register frac16_t f16Mult2)
 {
     register frac64_t f64Temp;
 	register uint64_t u64Temp;
@@ -61,7 +62,8 @@ static inline frac32_t MLIB_MulRnd_F32ls_FCi(register frac32_t f32Mult1, registe
 * f32Out = f32Mult1 * f16Mult2
 * With saturation
 *******************************************************************************/
-static inline frac32_t MLIB_MulRndSat_F32ls_FCi(register frac32_t f32Mult1, register frac16_t f16Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_MulRndSat_F32ls_FCi(register frac32_t f32Mult1, register frac16_t f16Mult2)
 {
     register int32_t i32Temp;
     
@@ -74,7 +76,8 @@ static inline frac32_t MLIB_MulRndSat_F32ls_FCi(register frac32_t f32Mult1, regi
 * f32Out = f32Mult1 * -f32Mult2
 * 
 *******************************************************************************/ 
-static inline frac32_t MLIB_MulNegRnd_F32_FCi(register frac32_t f32Mult1, register frac32_t f32Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_MulNegRnd_F32_FCi(register frac32_t f32Mult1, register frac32_t f32Mult2)
 {
     register frac64_t f64Temp;
     register uint64_t u64Temp;
@@ -91,7 +94,8 @@ static inline frac32_t MLIB_MulNegRnd_F32_FCi(register frac32_t f32Mult1, regist
 * f32Out = f32Mult1 * -f16Mult2
 * 
 *******************************************************************************/
-static inline frac32_t MLIB_MulNegRnd_F32ls_FCi(register frac32_t f32Mult1, register frac16_t f16Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_MulNegRnd_F32ls_FCi(register frac32_t f32Mult1, register frac16_t f16Mult2)
 {
     register frac64_t f64Temp;
 	register uint64_t u64Temp;

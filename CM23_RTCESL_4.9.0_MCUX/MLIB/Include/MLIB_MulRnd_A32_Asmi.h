@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -51,7 +51,8 @@ extern "C" {
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline frac16_t MLIB_MulRndSat_F16as_FAsmi(register acc32_t a32Accum, register frac16_t f16Mult)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_MulRndSat_F16as_FAsmi(register acc32_t a32Accum, register frac16_t f16Mult)
 {
     register frac32_t f32Val=0;
     #if defined(__CC_ARM)                                       /* For ARM Compiler */
@@ -183,7 +184,8 @@ RTCESL_INLINE_OPTIM_RESTORE
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline acc32_t MLIB_MulRnd_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_MulRnd_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
 {
     register frac32_t a32Val1=0, a32Val2=0, a32Val3=0;
     #if defined(__CC_ARM)                                   /* For ARM Compiler */
@@ -287,7 +289,8 @@ RTCESL_INLINE_OPTIM_RESTORE
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline acc32_t MLIB_MulRndSat_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_MulRndSat_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
 {
     register acc32_t a32Val1=0, a32Val2=0, a32Val3=0;
     #if defined(__CC_ARM)                                     /* For ARM Compiler */
@@ -377,57 +380,6 @@ static inline acc32_t MLIB_MulRndSat_A32_FAsmi(register acc32_t a32Mult1, regist
 
                     "MLIB_MulRndSat_A32_End1%=: \n\t"
                         : "+l"(a32Mult1), "+l"(a32Mult2), "+l"(a32Val1), "+l"(a32Val2), "+l"(a32Val3):);
-    #elif defined(__GNUC__)
-        __asm volatile(
-                        #if defined(__GNUC__)                 /* For GCC compiler */
-                            ".syntax unified \n"              /* Using unified asm syntax */
-                        #endif  
-                        "uxth %2, %0 \n"                      /* a32Val1 = a32Mult1.L */
-                        "uxth %3, %1 \n"                      /* a32Val2 = a32Mult2.L */
-                        "asrs %0, %0, #16 \n"                 /* a32Mult1 = a32Mult1.H */
-                        "asrs %1, %1, #16 \n"                 /* a32Mult2 = a32Mult2.H */
-  
-                        "movs %4, %2 \n"                      /* a32Val3 = a32Mult1.L */
-                        "muls %4, %4, %3 \n"                  /* a32Val3 = a32Mult1.L * a32Mult2.L */
-  
-                        "muls %2, %2, %1 \n"                  /* a32Val1 = a32Mult1.L * a32Mult2.H */
-                        "muls %3, %3, %0 \n"                  /* a32Val2 = a32Mult2.L * a32Mult1.H */
-                        "adds %3, %3, %2 \n"                  /* a32Val2 = a32Val2 + a32Val1 */
-  
-                        "lsrs %2, %4, #16 \n"                 /* a32Val1 = a32Val3 >> 16 */
-                        "adds %3, %3, %2 \n"                  /* a32Val2 = a32Val2 + a32Val3 */
-                        "asrs %2, %3, #16 \n"                 /* a32Val1 = a32Val2 >> 16 */
-                        "uxth %3, %3 \n"                      /* Clears higher 16 bits */
-  
-                        "muls %0, %0, %1 \n"                  /* a32Mult1 = a32Mult1.H * a32Mult2.H */
-                        "adds %0, %0, %2 \n"                  /* a32Mult1 = a32Mult1 + a32Val1 */
-  
-                        "asrs %1, %0, #14 \n"                 /* a32Mult2 = higher 18 bits of multiplication */
-                        "beq MLIB_MulRndSat_A32_NotSat \n"    /* If a32Mult2 = 0, then goes to the MLIB_MulRndSat_A32_NotSat */
-                        "mvns %1, %1 \n"                      /* a32Mult2 = ~ a32Mult2 */
-                        "beq MLIB_MulRndSat_A32_NotSat \n"    /* If a32Mult2 = 0, then goes to the MLIB_MulRndSat_A32_NotSat */
-                        "asrs %1, %0, #31 \n"                 /* a32Mult2 = sign of result */
-                        "movs %0, #0x80 \n"                   /* a32Mult1 = 0x80 */
-                        "lsls %0, %0, #24 \n"                 /* a32Mult1 = 0x80000000 */
-                        "subs %0, %0, #1 \n"                  /* a32Mult1 = 0x7FFFFFFF */
-                        "subs %0, %0, %1 \n"                  /* a32Mult1 = 0x7FFFFFFF - Sign of result */
-                        "b MLIB_MulRndSat_A32_End \n"         /* Goes to the MLIB_MulRndSat_A32_End*/
-  
-                    "MLIB_MulRndSat_A32_NotSat: \n"  
-                        "lsls %0, %0, #16 \n"                 /* a32Mult1 << 16 */
-                        "adds %0, %0, %3 \n"                  /* a32Mult1 = a32Mult1 + a32Val2 */
-                        "lsls %0, %0, #1 \n"                  /* Result << 1 */
-                        "uxth %4, %4 \n"                      /* Clears higher 16 bits */
-                        "lsrs %4, %4, #7 \n"                  /* a32Val3 >> 7 */
-                        "adds %4, %4, #0x80 \n"               /* Rounding */
-                        "lsrs %4, %4, #8 \n"                  /* a32Val3 >> 8 */
-                        "adds %0, %0, %4 \n"                  /* a32Mult1 = a32Mult1 + a32Val3 */
-  
-                    "MLIB_MulRndSat_A32_End: \n"  
-                        #if defined(__GNUC__)                 /* For GCC compiler */
-                            ".syntax divided \n"
-                        #endif
-                        : "+l"(a32Mult1), "+l"(a32Mult2), "+l"(a32Val1), "+l"(a32Val2), "+l"(a32Val3):);
     #else
         __asm volatile(
                         #if defined(__GNUC__)                 /* For GCC compiler */
@@ -501,7 +453,8 @@ RTCESL_INLINE_OPTIM_RESTORE
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline acc32_t MLIB_MulNegRnd_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_MulNegRnd_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
 {
     register frac32_t a32Val1=0, a32Val2=0, a32Val3=0;
     #if defined(__CC_ARM)                                   /* For ARM Compiler */
@@ -608,7 +561,8 @@ RTCESL_INLINE_OPTIM_RESTORE
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline acc32_t MLIB_MulNegRndSat_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_MulNegRndSat_A32_FAsmi(register acc32_t a32Mult1, register acc32_t a32Mult2)
 {
     register acc32_t a32Val1=0, a32Val2=0, a32Val3=0;
     #if defined(__CC_ARM)                                        /* For ARM Compiler */
@@ -698,57 +652,6 @@ static inline acc32_t MLIB_MulNegRndSat_A32_FAsmi(register acc32_t a32Mult1, reg
                     "MLIB_MulNegRndSat_A32_End1%=: \n\t"
                         "rsbs %0, %0, #0 \n\t"                   /* a32Mult1 = - a32Mult1 */
                         : "+l"(a32Mult1), "+l"(a32Mult2), "+l"(a32Val1), "+l"(a32Val2), "+l"(a32Val3):);
-    #elif defined(__GNUC__)
-        __asm volatile(
-                        #if defined(__GNUC__)                    /* For GCC compiler */
-                            ".syntax unified \n"                 /* Using unified asm syntax */
-                        #endif     
-                        "uxth %2, %0 \n"                         /* a32Val1 = a32Mult1.L */
-                        "uxth %3, %1 \n"                         /* a32Val2 = a32Mult2.L */
-                        "asrs %0, %0, #16 \n"                    /* a32Mult1 = a32Mult1.H */
-                        "asrs %1, %1, #16 \n"                    /* a32Mult2 = a32Mult2.H */
-     
-                        "movs %4, %2 \n"                         /* a32Val3 = a32Mult1.L */
-                        "muls %4, %4, %3 \n"                     /* a32Val3 = a32Mult1.L * a32Mult2.L */
-     
-                        "muls %2, %2, %1 \n"                     /* a32Val1 = a32Mult1.L * a32Mult2.H */
-                        "muls %3, %3, %0 \n"                     /* a32Val2 = a32Mult2.L * a32Mult1.H */
-                        "adds %3, %3, %2 \n"                     /* a32Val2 = a32Val2 + a32Val1 */
-     
-                        "lsrs %2, %4, #16 \n"                    /* a32Val1 = a32Val3 >> 16 */
-                        "adds %3, %3, %2 \n"                     /* a32Val2 = a32Val2 + a32Val3 */
-                        "asrs %2, %3, #16 \n"                    /* a32Val1 = a32Val2 >> 16 */
-                        "uxth %3, %3 \n"                         /* Clears higher 16 bits */
-     
-                        "muls %0, %0, %1 \n"                     /* a32Mult1 = a32Mult1.H * a32Mult2.H */
-                        "adds %0, %0, %2 \n"                     /* a32Mult1 = a32Mult1 + a32Val1 */
-     
-                        "asrs %1, %0, #14 \n"                    /* a32Mult2 = higher 18 bits of multiplication */
-                        "beq MLIB_MulNegRndSat_A32_NotSat%= \n"    /* If a32Mult2 = 0, then goes to the MLIB_MulNegRndSat_A32_NotSat */
-                        "mvns %1, %1 \n"                         /* a32Mult2 = ~ a32Mult2 */
-                        "beq MLIB_MulNegRndSat_A32_NotSat%= \n"    /* If a32Mult2 = 0, then goes to the MLIB_MulNegRndSat_A32_NotSat */
-                        "asrs %1, %0, #31 \n"                    /* a32Mult2 = sign of result */
-                        "movs %0, #0x80 \n"                      /* a32Mult1 = 0x80 */
-                        "lsls %0, %0, #24 \n"                    /* a32Mult1 = 0x80000000 */
-                        "subs %0, %0, %1 \n"                     /* a32Mult1 = 0x80000000 - Sign of result */
-                        "b MLIB_MulNegRndSat_A32_End%= \n"         /* Goes to the MLIB_MulNegRndSat_A32_End*/
-     
-                    "MLIB_MulNegRndSat_A32_NotSat%=: \n"     
-                        "lsls %0, %0, #16 \n"                    /* a32Mult1 << 16 */
-                        "adds %0, %0, %3 \n"                     /* a32Mult1 = a32Mult1 + a32Val2 */
-                        "lsls %0, %0, #1 \n"                     /* Result << 1 */
-                        "uxth %4, %4 \n"                         /* Clears higher 16 bits */
-                        "lsrs %4, %4, #7 \n"                     /* a32Val3 >> 7 */
-                        "adds %4, %4, #0x80 \n"                  /* Rounding */
-                        "lsrs %4, %4, #8 \n"                     /* a32Val3 >> 8 */
-                        "adds %0, %0, %4 \n"                     /* a32Mult1 = a32Mult1 + a32Val3 */
-     
-                    "MLIB_MulNegRndSat_A32_End%=: \n"     
-                        "rsbs %0, %0, #0 \n"                     /* a32Mult1 = - a32Mult1 */
-                        #if defined(__GNUC__)                    /* For GCC compiler */
-                            ".syntax divided \n"
-                        #endif
-                        : "+l"(a32Mult1), "+l"(a32Mult2), "+l"(a32Val1), "+l"(a32Val2), "+l"(a32Val3):);
     #else
         __asm volatile(
                         #if defined(__GNUC__)                    /* For GCC compiler */
@@ -822,7 +725,8 @@ RTCESL_INLINE_OPTIM_RESTORE
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline frac16_t MLIB_MulNegRndSat_F16as_FAsmi(register acc32_t a32Accum, register frac16_t f16Mult)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_MulNegRndSat_F16as_FAsmi(register acc32_t a32Accum, register frac16_t f16Mult)
 {
     register frac32_t f32Val=0;
     #if defined(__CC_ARM)                                          /* For ARM Compiler */

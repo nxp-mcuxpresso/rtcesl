@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -34,14 +34,21 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/  
-#define GFLIB_Lut1D_F16_C(f16X, pf16Table, u16TableSize) GFLIB_Lut1D_F16_FC(f16X, pf16Table, u16TableSize)  
-#define GFLIB_Lut1D_F32_C(f32X, pf32Table, u16TableSize) GFLIB_Lut1D_F32_FC(f32X, pf32Table, u16TableSize)  
+#define GFLIB_Lut1D_F16_C(f16X, pf16Table, u16TableSize)    GFLIB_Lut1D_F16_FC(f16X, pf16Table, u16TableSize)  
+#define GFLIB_Lut1D_F32_C(f32X, pf32Table, u16TableSize)    GFLIB_Lut1D_F32_FC(f32X, pf32Table, u16TableSize)  
+#define GFLIB_Lut1D_F16_CRam(f16X, pf16Table, u16TableSize) GFLIB_Lut1D_F16_FCRam(f16X, pf16Table, u16TableSize) 
+#define GFLIB_Lut1D_F32_CRam(f32X, pf32Table, u16TableSize) GFLIB_Lut1D_F32_FCRam(f32X, pf32Table, u16TableSize)  
 
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
 extern frac16_t GFLIB_Lut1D_F16_FC(frac16_t f16X, const frac16_t *pf16Table, uint16_t u16TableSize);
+RAM_FUNC_LIB 
+extern frac16_t GFLIB_Lut1D_F16_FCRam(frac16_t f16X, const frac16_t *pf16Table, uint16_t u16TableSize);
+
 extern frac32_t GFLIB_Lut1D_F32_FC(frac32_t f32X, const frac32_t *pf32Table, uint16_t u16TableSize);
+RAM_FUNC_LIB 
+extern frac32_t GFLIB_Lut1D_F32_FCRam(frac32_t f32X, const frac32_t *pf32Table, uint16_t u16TableSize);
 
 #if defined(__cplusplus)
 }

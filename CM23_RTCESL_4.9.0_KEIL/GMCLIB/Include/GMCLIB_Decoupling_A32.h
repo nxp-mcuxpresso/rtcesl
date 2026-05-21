@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,8 +35,10 @@ extern "C" {
 /******************************************************************************
 * Macros 
 ******************************************************************************/   
-#define GMCLIB_DecouplingPMSM_F16_Asm(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec) \
+#define GMCLIB_DecouplingPMSM_F16_Asm(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)    \
         GMCLIB_DecouplingPMSM_F16_FAsm(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)
+#define GMCLIB_DecouplingPMSM_F16_AsmRam(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec) \
+        GMCLIB_DecouplingPMSM_F16_FAsmRam(psUDQ, psIDQ, f16SpeedEl, psParam, psUDQDec)
 
 /******************************************************************************
 * Types 
@@ -55,6 +57,13 @@ extern void GMCLIB_DecouplingPMSM_F16_FAsm(const GMCLIB_2COOR_DQ_T_F16 *psUDQ,
                                            frac16_t f16SpeedEl,
                                            const GMCLIB_DECOUPLINGPMSM_T_A32 *psParam,
                                            GMCLIB_2COOR_DQ_T_F16 *psUDQDec);
+
+RAM_FUNC_LIB 
+extern void GMCLIB_DecouplingPMSM_F16_FAsmRam(const GMCLIB_2COOR_DQ_T_F16 *psUDQ,
+                                              const GMCLIB_2COOR_DQ_T_F16 *psIDQ,
+                                              frac16_t f16SpeedEl,
+                                              const GMCLIB_DECOUPLINGPMSM_T_A32 *psParam,
+                                              GMCLIB_2COOR_DQ_T_F16 *psUDQDec);
 
 #if defined(__cplusplus) 
 }

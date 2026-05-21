@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -34,9 +34,11 @@ extern "C" {
 * Macros 
 ******************************************************************************/
 #define AMCLIB_CtrlFluxWkng_F16_C(f16IQErr, f16UQReq, f16UQLim, psCtrl)       \
-        AMCLIB_CtrlFluxWkng_F16_FC(f16IQErr, f16UQReq, f16UQLim, psCtrl)                        
+        AMCLIB_CtrlFluxWkng_F16_FC(f16IQErr, f16UQReq, f16UQLim, psCtrl)
+#define AMCLIB_CtrlFluxWkng_F16_CRam(f16IQErr, f16UQReq, f16UQLim, psCtrl)    \
+        AMCLIB_CtrlFluxWkng_F16_FCRam(f16IQErr, f16UQReq, f16UQLim, psCtrl)		
 #define AMCLIB_CtrlFluxWkngInit_F16_Ci(f16InitVal, psCtrl)                    \
-        AMCLIB_CtrlFluxWkngInit_F16_FCi(f16InitVal, psCtrl)   
+        AMCLIB_CtrlFluxWkngInit_F16_FCi(f16InitVal, psCtrl)
 
 /******************************************************************************
 * Types
@@ -59,7 +61,10 @@ typedef struct
 ******************************************************************************/
 extern frac16_t AMCLIB_CtrlFluxWkng_F16_FC(frac16_t f16IQErr, frac16_t f16UQReq, frac16_t f16UQLim,
                                            AMCLIB_CTRL_FLUX_WKNG_T_A32 *psCtrl);
-
+RAM_FUNC_LIB 
+extern frac16_t AMCLIB_CtrlFluxWkng_F16_FCRam(frac16_t f16IQErr, frac16_t f16UQReq, frac16_t f16UQLim,
+                                              AMCLIB_CTRL_FLUX_WKNG_T_A32 *psCtrl);
+										   
 /***************************************************************************//*!
 *
 * @brief  Initialization for the Flux weakening control function
@@ -75,8 +80,9 @@ extern frac16_t AMCLIB_CtrlFluxWkng_F16_FC(frac16_t f16IQErr, frac16_t f16UQReq,
 *  - Iq IIR filter initialization
 *
 ****************************************************************************/
-static inline void AMCLIB_CtrlFluxWkngInit_F16_FCi(frac16_t f16InitVal,
-                                                   AMCLIB_CTRL_FLUX_WKNG_T_A32 *psCtrl)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void AMCLIB_CtrlFluxWkngInit_F16_FCi(frac16_t f16InitVal,
+                                                                 AMCLIB_CTRL_FLUX_WKNG_T_A32 *psCtrl)
 {
     GFLIB_CtrlPIpAWInit_F16(f16InitVal, &psCtrl->sFWPiParam);
     GDFLIB_FilterIIR1Init_F16 (&psCtrl->sIqErrIIR1Param);

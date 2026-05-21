@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -28,7 +28,6 @@ extern "C" {
 /*******************************************************************************
 * Includes
 *******************************************************************************/
-#include "gdflib_types.h"
 #include "mlib.h"
 
 /*******************************************************************************
@@ -54,8 +53,9 @@ typedef struct{
 *         ptr  GDFLIB_FILTER_EXP_T_F32 *psParam - pointer to filter structure 
 *
 *******************************************************************************/
-static inline void GDFLIB_FilterExpInit_F16_FCi(frac16_t f16InitVal,
-                                         GDFLIB_FILTER_EXP_T_F32 *psParam)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GDFLIB_FilterExpInit_F16_FCi(frac16_t f16InitVal,
+                                                GDFLIB_FILTER_EXP_T_F32 *psParam)
 {
     psParam->f32AccK_1 = MLIB_Conv_F32s(f16InitVal); 
 }
@@ -90,7 +90,8 @@ static inline void GDFLIB_FilterExpInit_F16_FCi(frac16_t f16InitVal,
 * A    is the filter constant assign as 1-a from range (0; 1) (where a is exp. filter constant - smoothing constant).
 *
 ****************************************************************************/
-static inline frac16_t GDFLIB_FilterExp_F16_FCi(frac16_t f16InX,
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t GDFLIB_FilterExp_F16_FCi(frac16_t f16InX,
                                                 GDFLIB_FILTER_EXP_T_F32 *psParam)
 {
     register frac32_t f32Temp;
@@ -101,7 +102,7 @@ static inline frac16_t GDFLIB_FilterExp_F16_FCi(frac16_t f16InX,
     
     /* Filter calculations  */ 
     f32Temp = MLIB_Conv_F32s(f16InX);
-    f32Temp = MLIB_SubSat_F32_FAsmi(f32Temp, f32AccK_1);               /* calculation x(k) - y(k-1) */
+    f32Temp = MLIB_SubSat_F32_FAsmi(f32Temp, f32AccK_1);              /* calculation x(k) - y(k-1) */
     f32Temp = MLIB_MacRndSat_F32(f32AccK_1, psParam->f32A, f32Temp);  /* y(k-1) + A * (x(k) - y(k-1)) */
     psParam->f32AccK_1 = f32Temp;                                     /* store filter state value */
     

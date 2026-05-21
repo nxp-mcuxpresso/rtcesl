@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -41,7 +41,8 @@ extern "C" {
 * a32Out = f16Min - f16Sub
 * 
 *******************************************************************************/   
-static inline acc32_t MLIB_Sub_A32ss_FCi(register frac16_t f16Min, register frac16_t f16Sub)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_Sub_A32ss_FCi(register frac16_t f16Min, register frac16_t f16Sub)
 {
     return((acc32_t)((acc32_t)f16Min - (acc32_t)f16Sub));              
 }
@@ -51,7 +52,8 @@ static inline acc32_t MLIB_Sub_A32ss_FCi(register frac16_t f16Min, register frac
 * a32Out = a32Accum - f16Sub
 * 
 *******************************************************************************/   
-static inline acc32_t MLIB_Sub_A32as_FCi(register acc32_t a32Accum, register frac16_t f16Sub)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_Sub_A32as_FCi(register acc32_t a32Accum, register frac16_t f16Sub)
 {
     return ((acc32_t)((acc32_t)a32Accum -(acc32_t)f16Sub));             
 }

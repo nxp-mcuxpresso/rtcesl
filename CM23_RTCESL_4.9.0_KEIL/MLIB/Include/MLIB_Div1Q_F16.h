@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2025 NXP
+* Copyright 2016-2021, 2025-2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -52,7 +52,8 @@ extern "C" {
 *           If the denominator is 0, the output is 0x7FFF.          
 *
 ****************************************************************************/
-static inline frac16_t MLIB_Div1Q_F16_FCi(register frac16_t f16Num, register frac16_t f16Denom)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Div1Q_F16_FCi(register frac16_t f16Num, register frac16_t f16Denom)
 {
     if (f16Denom == (frac16_t)0)
     {
@@ -78,7 +79,8 @@ static inline frac16_t MLIB_Div1Q_F16_FCi(register frac16_t f16Num, register fra
 *           to 0x7FFF.
 *
 ****************************************************************************/
-static inline frac16_t MLIB_Div1QSat_F16_FCi(register frac16_t f16Num, register frac16_t f16Denom)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Div1QSat_F16_FCi(register frac16_t f16Num, register frac16_t f16Denom)
 {
     if (f16Denom == (frac16_t)0)
     {

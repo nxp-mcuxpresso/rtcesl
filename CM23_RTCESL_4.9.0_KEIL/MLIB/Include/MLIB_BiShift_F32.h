@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -44,7 +44,8 @@ extern "C" {
 * does not saturate the output.  
 * 
 *******************************************************************************/ 
-static inline frac32_t MLIB_ShLBi_F32_FCi(register frac32_t f32Val, register int16_t i16Sh)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_ShLBi_F32_FCi(register frac32_t f32Val, register int16_t i16Sh)
 {
     return (i16Sh<(int16_t)0) ? MLIB_ShR_F32_Ci(f32Val, (uint16_t)(-i16Sh)) : 
                                 MLIB_ShL_F32_Ci(f32Val, (uint16_t)(i16Sh));
@@ -56,7 +57,8 @@ static inline frac32_t MLIB_ShLBi_F32_FCi(register frac32_t f32Val, register int
 * does not saturate the output.  
 * 
 *******************************************************************************/  
-static inline frac32_t MLIB_ShRBi_F32_FCi(register frac32_t f32Val, register int16_t i16Sh)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_ShRBi_F32_FCi(register frac32_t f32Val, register int16_t i16Sh)
 {
     return (i16Sh<(int16_t)0) ? MLIB_ShL_F32_Ci(f32Val, (uint16_t)(-i16Sh)) : 
                                 MLIB_ShR_F32_Ci(f32Val, (uint16_t)(i16Sh));

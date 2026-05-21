@@ -34,7 +34,8 @@ extern "C" {
 /*******************************************************************************
 * Macros
 *******************************************************************************/
-#define GFLIB_Lut1D_F16_Asmi(f16X, pf16Table, u16TableSize) GFLIB_Lut1D_F16_FAsmi(f16X, pf16Table, u16TableSize)
+#define GFLIB_Lut1D_F16_Asmi(f16X, pf16Table, u16TableSize)                    \
+        GFLIB_Lut1D_F16_FAsmi(f16X, pf16Table, u16TableSize)
 
 /***************************************************************************//*!
 *
@@ -53,6 +54,9 @@ extern "C" {
 *           the size 8.
 *
 *******************************************************************************/
+RTCESL_INLINE_OPTIM_SAVE
+RTCESL_INLINE_OPTIM_SET 
+RAM_FUNC_LIB     
 inline static frac16_t GFLIB_Lut1D_F16_FAsmi(frac16_t f16X, const frac16_t *pf16Table, uint16_t u16TableSize)
 {
     register frac32_t f32Val1 = 2;
@@ -137,6 +141,7 @@ inline static frac16_t GFLIB_Lut1D_F16_FAsmi(frac16_t f16X, const frac16_t *pf16
 
     return f16X;
 }
+RTCESL_INLINE_OPTIM_RESTORE 
 
 #if defined(__cplusplus)
 }

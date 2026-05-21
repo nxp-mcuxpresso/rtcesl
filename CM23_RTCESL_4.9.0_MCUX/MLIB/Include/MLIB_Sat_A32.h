@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -41,7 +41,8 @@ extern "C" {
 * saturate if the original number is greater than 1. 
 * 
 *******************************************************************************/ 
-static inline frac16_t MLIB_Sat_F16a_FCi(register acc32_t a32Accum)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Sat_F16a_FCi(register acc32_t a32Accum)
 {
     register int32_t i32z;
     i32z = (int32_t)(a32Accum);

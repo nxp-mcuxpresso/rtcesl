@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -33,20 +33,22 @@ extern "C" {
 
 /*******************************************************************************
 * Macros 
-*******************************************************************************/   
-#define GMCLIB_ElimDcBusRipFOC_F16_C(f16UDCBus, psUAlBe, psUAlBeComp)          \
-        GMCLIB_ElimDcBusRipFOC_F16_FC(f16UDCBus, psUAlBe, psUAlBeComp)                                
+*******************************************************************************/                               
 #define GMCLIB_ElimDcBusRipFOC_F16_Asm(f16UDCBus, psUAlBe, psUAlBeComp)        \
         GMCLIB_ElimDcBusRipFOC_F16_FAsm(f16UDCBus, psUAlBe, psUAlBeComp)
+#define GMCLIB_ElimDcBusRipFOC_F16_AsmRam(f16UDCBus, psUAlBe, psUAlBeComp)     \
+        GMCLIB_ElimDcBusRipFOC_F16_FAsmRam(f16UDCBus, psUAlBe, psUAlBeComp)
+
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
-extern void GMCLIB_ElimDcBusRipFOC_F16_FC(frac16_t f16UDCBus,
-                                          const GMCLIB_2COOR_ALBE_T_F16 *psUAlBe,
-                                          GMCLIB_2COOR_ALBE_T_F16 *psUAlBeComp);
 extern void GMCLIB_ElimDcBusRipFOC_F16_FAsm(frac16_t f16UDCBus,
                                             const GMCLIB_2COOR_ALBE_T_F16 *psUAlBe,
                                             GMCLIB_2COOR_ALBE_T_F16 *psUAlBeComp);
+RAM_FUNC_LIB
+extern void GMCLIB_ElimDcBusRipFOC_F16_FAsmRam(frac16_t f16UDCBus,
+                                               const GMCLIB_2COOR_ALBE_T_F16 *psUAlBe,
+                                               GMCLIB_2COOR_ALBE_T_F16 *psUAlBeComp);
 #if defined(__cplusplus) 
 }
 #endif

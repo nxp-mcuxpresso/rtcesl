@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -34,10 +34,12 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/   
-#define GMCLIB_Park_F16_Asmi(psIn, psAnglePos, psOut)    GMCLIB_Park_F16_FAsmi(psIn, psAnglePos, psOut)
-#define GMCLIB_ParkInv_F16_Asmi(psIn, psAnglePos, psOut) GMCLIB_ParkInv_F16_FAsmi(psIn, psAnglePos, psOut)
+#define GMCLIB_Park_F16_Asmi(psIn, psAnglePos, psOut)                         \
+        GMCLIB_Park_F16_FAsmi(psIn, psAnglePos, psOut)
+#define GMCLIB_ParkInv_F16_Asmi(psIn, psAnglePos, psOut)                      \
+        GMCLIB_ParkInv_F16_FAsmi(psIn, psAnglePos, psOut)
 
-  /***************************************************************************//*!
+/***************************************************************************//*!
 *
 * @brief       The function calculates Park Transformation which is used for 
 *              transforming values (current, voltage, flux) from 
@@ -63,12 +65,12 @@ extern "C" {
 #if defined(__IAR_SYSTEMS_ICC__)           /* IAR compiler */
 #pragma diag_suppress=Pe549  /* Suppresses the Pe549 warning for IAR compiler*/
 #endif
-/* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
-RTCESL_INLINE_OPTIM_SET
-static inline void GMCLIB_Park_F16_FAsmi(const GMCLIB_2COOR_ALBE_T_F16 *psIn,
-                                         const GMCLIB_2COOR_SINCOS_T_F16 *psAnglePos,
-                                         GMCLIB_2COOR_DQ_T_F16 *psOut)
+RTCESL_INLINE_OPTIM_SET 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GMCLIB_Park_F16_FAsmi(const GMCLIB_2COOR_ALBE_T_F16 *psIn,
+                                                       const GMCLIB_2COOR_SINCOS_T_F16 *psAnglePos,
+                                                       GMCLIB_2COOR_DQ_T_F16 *psOut)
 {
     register frac32_t f32Val1=0, f32Val2=0, f32Val3=0;
 
@@ -196,12 +198,12 @@ static inline void GMCLIB_Park_F16_FAsmi(const GMCLIB_2COOR_ALBE_T_F16 *psIn,
                         : "+l"(f32Val1), "+l"(f32Val2), "+l"(f32Val3), "+l"(psIn), "+l"(psAnglePos): "l"(psOut));
     #endif
 }
-/* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_RESTORE 
 
 #if defined(__IAR_SYSTEMS_ICC__)           /* IAR compiler */
 #pragma diag_default=Pe549
 #endif
+
 /***************************************************************************//*!
 *
 * @brief        The function calculates Inverse Park Transformation which is used 
@@ -228,12 +230,12 @@ RTCESL_INLINE_OPTIM_RESTORE
 #if defined(__IAR_SYSTEMS_ICC__)           /* IAR compiler */
 #pragma diag_suppress=Pe549  /* Suppresses the Pe549 warning for IAR compiler*/
 #endif
-/* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
-RTCESL_INLINE_OPTIM_SET
-static inline void GMCLIB_ParkInv_F16_FAsmi(const GMCLIB_2COOR_DQ_T_F16 *psIn,
-                                            const GMCLIB_2COOR_SINCOS_T_F16 *psAnglePos,
-                                            GMCLIB_2COOR_ALBE_T_F16 *psOut)
+RTCESL_INLINE_OPTIM_SET 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GMCLIB_ParkInv_F16_FAsmi(const GMCLIB_2COOR_DQ_T_F16 *psIn,
+                                                          const GMCLIB_2COOR_SINCOS_T_F16 *psAnglePos,
+                                                          GMCLIB_2COOR_ALBE_T_F16 *psOut)
 {
     register frac32_t f32Val1=0, f32Val2=0, f32Val3=0;
 
@@ -360,8 +362,9 @@ static inline void GMCLIB_ParkInv_F16_FAsmi(const GMCLIB_2COOR_DQ_T_F16 *psIn,
                         #endif
                         : "+l"(f32Val1), "+l"(f32Val2), "+l"(f32Val3), "+l"(psIn), "+l"(psAnglePos): "l"(psOut));
     #endif
+
+    return;
 }
-/* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_RESTORE 
 
 #if defined(__IAR_SYSTEMS_ICC__)           /* IAR compiler */

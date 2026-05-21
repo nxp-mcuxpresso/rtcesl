@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -33,18 +33,27 @@ extern "C" {
 /*******************************************************************************
 * Macros
 *******************************************************************************/
-#define MLIB_Msu4Rnd_F32_Asm(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2)    \
+#define MLIB_Msu4Rnd_F32_Asm(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2)       \
         MLIB_Msu4Rnd_F32_FAsm(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2)
-#define MLIB_Msu4RndSat_F32_Asm(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2) \
+#define MLIB_Msu4RndSat_F32_Asm(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2)    \
         MLIB_Msu4RndSat_F32_FAsm(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2)
+#define MLIB_Msu4RndSat_F32_AsmRam(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2) \
+        MLIB_Msu4RndSat_F32_FAsmRam(f32MinMul1, f32MinMul2, f32SubMul1, f32SubMul2)
 
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
 extern frac32_t MLIB_Msu4Rnd_F32_FAsm(register frac32_t f32MinMul1, register frac32_t f32MinMul2, 
                                       register frac32_t f32SubMul1, register frac32_t f32SubMul2);
+RAM_FUNC_LIB
+extern frac32_t MLIB_Msu4Rnd_F32_FAsmRam(register frac32_t f32MinMul1, register frac32_t f32MinMul2, 
+                                         register frac32_t f32SubMul1, register frac32_t f32SubMul2);
+
 extern frac32_t MLIB_Msu4RndSat_F32_FAsm(register frac32_t f32MinMul1,register frac32_t f32MinMul2,
                                          register frac32_t f32SubMul1,register frac32_t f32SubMul2);
+RAM_FUNC_LIB                     
+extern frac32_t MLIB_Msu4RndSat_F32_FAsmRam(register frac32_t f32MinMul1,register frac32_t f32MinMul2,
+                                            register frac32_t f32SubMul1,register frac32_t f32SubMul2); 
 
 #if defined(__cplusplus)
 }

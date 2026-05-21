@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -121,7 +121,6 @@ typedef signed long long        acc64_t;
 
 /* Float data types */
 typedef float                   float_t;          
-
 /*******************************************************************************
 * Macros
 *******************************************************************************/  
@@ -160,6 +159,27 @@ typedef float                   float_t;
 #ifndef INT64_MAX
 #define INT64_MAX               ((int64_t) 0x7fffffffffffffff)
 #endif
+
+/* float */
+#ifndef FLOAT_MINUS_MIN
+#define FLOAT_MINUS_MIN         ((float_t)(-0x1p-126))        /* -1.17549435E-38, 0x80800000 */
+#endif
+
+#ifndef FLOAT_PLUS_MIN
+#define FLOAT_PLUS_MIN          ((float_t)(0x1p-126))         /* 1.17549435E-38, 0x00800000*/
+#endif
+
+#ifndef FLOAT_MINUS_MAX
+#define FLOAT_MINUS_MAX         ((float_t)(-0x1.FFFFFEp127))  /* -3.40282346E+38, 0xFF7FFFFF */
+#endif
+
+#ifndef FLOAT_PLUS_MAX
+#define FLOAT_PLUS_MAX          ((float_t)(0x1.FFFFFEp127))   /* 3.40282346E+38F, 0x7F7FFFFF */
+#endif
+
+#ifndef FLOAT_PI                                              /* 3.1415927411 = */
+#define FLOAT_PI                ((float_t)(0x1.921FB6P1))     /* = 1.1001 0010 0001 1111 1011 0110 = */
+#endif                                                        /* = 0x1.921FB6P1, 0x40490FDB */
 
 /* Fractional conversion macros */
 #if !defined(FRAC8)

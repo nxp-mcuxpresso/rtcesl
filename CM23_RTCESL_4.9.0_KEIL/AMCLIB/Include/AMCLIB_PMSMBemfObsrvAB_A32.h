@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -36,7 +36,9 @@ extern "C" {
 ******************************************************************************/
 #define AMCLIB_PMSMBemfObsrvAB_F16_C(psIAlBe, psUAlBe, f16Speed, psCtrl)       \
         AMCLIB_PMSMBemfObsrvAB_F16_FC(psIAlBe, psUAlBe, f16Speed, psCtrl)
-#define AMCLIB_PMSMBemfObsrvABInit_F16_Ci(psCtrl)                               \
+#define AMCLIB_PMSMBemfObsrvAB_F16_CRam(psIAlBe, psUAlBe, f16Speed, psCtrl)    \
+        AMCLIB_PMSMBemfObsrvAB_F16_FCRam(psIAlBe, psUAlBe, f16Speed, psCtrl)
+#define AMCLIB_PMSMBemfObsrvABInit_F16_Ci(psCtrl)                              \
         AMCLIB_PMSMBemfObsrvABInit_F16_FCi(psCtrl)            
 /******************************************************************************
 * Types
@@ -73,6 +75,11 @@ extern void AMCLIB_PMSMBemfObsrvAB_F16_FC(const GMCLIB_2COOR_ALBE_T_F16 *psIAlBe
                                           const GMCLIB_2COOR_ALBE_T_F16 *psUAlBe,
                                           frac16_t f16Speed,
                                           AMCLIB_BEMF_OBSRV_AB_T_A32 *psCtrl);
+RAM_FUNC_LIB 
+extern void AMCLIB_PMSMBemfObsrvAB_F16_FCRam(const GMCLIB_2COOR_ALBE_T_F16 *psIAlBe,
+                                             const GMCLIB_2COOR_ALBE_T_F16 *psUAlBe,
+                                             frac16_t f16Speed,
+                                             AMCLIB_BEMF_OBSRV_AB_T_A32 *psCtrl);
 
 /******************************************************************************
 * Inline functions
@@ -96,7 +103,8 @@ extern void AMCLIB_PMSMBemfObsrvAB_F16_FC(const GMCLIB_2COOR_ALBE_T_F16 *psIAlBe
 *    sCtrl_f32IBeta_1 = 0; 
 *
 ****************************************************************************/
-static inline void AMCLIB_PMSMBemfObsrvABInit_F16_FCi(AMCLIB_BEMF_OBSRV_AB_T_A32 *psCtrl)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void AMCLIB_PMSMBemfObsrvABInit_F16_FCi(AMCLIB_BEMF_OBSRV_AB_T_A32 *psCtrl)
 {
     psCtrl -> sIObsrv.f32Alpha = 0;
     psCtrl -> sIObsrv.f32Beta  = 0;

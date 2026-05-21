@@ -53,6 +53,8 @@ extern "C" {
 *           the size 8.
 *
 *******************************************************************************/
+RTCESL_INLINE_OPTIM_SAVE
+RTCESL_INLINE_OPTIM_SET 
 inline static frac16_t GFLIB_LutPer1D_F16_FAsmi(frac16_t f16X, const frac16_t *pf16Table, uint16_t u16TableSize)
 {
     register frac32_t f32Val1 = 32768, f32Val2 = 16, f32Val3 = 1;
@@ -148,6 +150,7 @@ inline static frac16_t GFLIB_LutPer1D_F16_FAsmi(frac16_t f16X, const frac16_t *p
 
     return f16X;
 }
+RTCESL_INLINE_OPTIM_RESTORE 
 
 #if defined(__cplusplus)
 }

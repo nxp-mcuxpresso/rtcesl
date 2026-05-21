@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -45,7 +45,8 @@ extern "C" {
 * The function does not saturate the output.
 *              
 *******************************************************************************/ 
-static inline frac16_t MLIB_Sh1L_F16_FCi(register frac16_t f16Val)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Sh1L_F16_FCi(register frac16_t f16Val)
 {
     register uint32_t ui32temp = (uint32_t)f16Val << 1U;
     return (frac16_t)ui32temp;
@@ -56,7 +57,8 @@ static inline frac16_t MLIB_Sh1L_F16_FCi(register frac16_t f16Val)
 * This function returns the f16Val input shifted by 1 to the right. 
 *              
 *******************************************************************************/
-static inline frac16_t MLIB_Sh1R_F16_FCi(register frac16_t f16Val)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Sh1R_F16_FCi(register frac16_t f16Val)
 {
     register uint32_t ui32temp = (uint32_t)f16Val >> 1U;
     return (frac16_t)ui32temp;
@@ -68,7 +70,8 @@ static inline frac16_t MLIB_Sh1R_F16_FCi(register frac16_t f16Val)
 * The function does not saturate the output. 
 *             
 *******************************************************************************/ 
-static inline frac16_t MLIB_ShL_F16_FCi(register frac16_t f16Val, register uint16_t u16Sh)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_ShL_F16_FCi(register frac16_t f16Val, register uint16_t u16Sh)
 {
     register uint32_t ui32temp = (uint32_t)f16Val << u16Sh;
     return (frac16_t)ui32temp;
@@ -79,7 +82,8 @@ static inline frac16_t MLIB_ShL_F16_FCi(register frac16_t f16Val, register uint1
 * This function returns the f16Val input shifted by the number of u16Sh to the right.  
 *             
 *******************************************************************************/ 
-static inline frac16_t MLIB_ShR_F16_FCi(register frac16_t f16Val, register uint16_t u16Sh)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_ShR_F16_FCi(register frac16_t f16Val, register uint16_t u16Sh)
 {
     register uint32_t ui32temp = (uint32_t)f16Val >> u16Sh;
     return (frac16_t)ui32temp;

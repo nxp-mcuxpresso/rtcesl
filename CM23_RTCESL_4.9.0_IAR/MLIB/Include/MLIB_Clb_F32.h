@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -40,7 +40,8 @@ extern "C" {
 *  - first, the absolute value of the input is calculated
 *  - then the amount of zero bits before the first non-zero bits is counted (sign bit is not included)
 ****************************************************************************/ 
-static inline uint16_t MLIB_Clb_U16l_FCi(register frac32_t f32Val)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline uint16_t MLIB_Clb_U16l_FCi(register frac32_t f32Val)
 {
     register uint32_t u32Out;        
     register uint32_t u32shift;

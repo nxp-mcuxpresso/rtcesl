@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -41,7 +41,8 @@ extern "C" {
 *  f32Out = f32Add1 + f32Add2
 *  function is not saturated
 *******************************************************************************/ 
-static inline frac32_t MLIB_Add_F32_FCi(register frac32_t f32Add1, register frac32_t f32Add2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_Add_F32_FCi(register frac32_t f32Add1, register frac32_t f32Add2)
 {
     return((frac32_t)(f32Add1 + f32Add2));
 }
@@ -49,7 +50,8 @@ static inline frac32_t MLIB_Add_F32_FCi(register frac32_t f32Add1, register frac
 *  Saturated Addition      
 *  f32Out = f32Add1 + f32Add2
 *******************************************************************************/
-static inline frac32_t MLIB_AddSat_F32_FCi(register frac32_t f32Add1, register frac32_t f32Add2)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_AddSat_F32_FCi(register frac32_t f32Add1, register frac32_t f32Add2)
 {
     register int32_t i32z;
     register uint32_t u32SatMin;

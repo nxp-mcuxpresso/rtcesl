@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -36,8 +36,10 @@ extern "C" {
 /******************************************************************************
 * Macros 
 ******************************************************************************/   
-#define GMCLIB_DTCompLut1D_F16_C(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp) \
+#define GMCLIB_DTCompLut1D_F16_C(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp)    \
         GMCLIB_DTCompLut1D_F16_FC(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp)
+#define GMCLIB_DTCompLut1D_F16_CRam(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp) \
+        GMCLIB_DTCompLut1D_F16_FCRam(psIABC, psUAlBe, f16U_DCB, psParam, psUAlBeDtComp)
 
 /******************************************************************************
 * Types 
@@ -56,6 +58,13 @@ extern void GMCLIB_DTCompLut1D_F16_FC(const GMCLIB_3COOR_T_F16 *psIABC,
                                       frac16_t f16UDCBus,
                                       const GMCLIB_DTCOMPLUT1D_T_F16 *psParam,
                                       GMCLIB_2COOR_ALBE_T_F16 *psUAlBeDTComp);
+
+RAM_FUNC_LIB
+extern void GMCLIB_DTCompLut1D_F16_FCRam(const GMCLIB_3COOR_T_F16 *psIABC,
+                                         const GMCLIB_2COOR_ALBE_T_F16 *psUAlBe,
+                                         frac16_t f16UDCBus,
+                                         const GMCLIB_DTCOMPLUT1D_T_F16 *psParam,
+                                         GMCLIB_2COOR_ALBE_T_F16 *psUAlBeDTComp);
 
 #if defined(__cplusplus) 
 }

@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -40,6 +40,8 @@ extern "C" {
         GDFLIB_FilterIIR1_F16_FCi(f16InX, psParam)                             
 #define GDFLIB_FilterIIR1_F16_Asm(f16InX, psParam)                             \
         GDFLIB_FilterIIR1_F16_FAsm(f16InX, psParam)
+#define GDFLIB_FilterIIR1_F16_AsmRam(f16InX, psParam)                          \
+        GDFLIB_FilterIIR1_F16_FAsmRam(f16InX, psParam)
 /*******************************************************************************
 * Types
 *******************************************************************************/
@@ -61,6 +63,8 @@ typedef struct
 * Exported function prototypes
 *******************************************************************************/
 extern frac16_t GDFLIB_FilterIIR1_F16_FAsm(frac16_t f16InX, GDFLIB_FILTER_IIR1_T_F32 *psParam);
+RAM_FUNC_LIB
+extern frac16_t GDFLIB_FilterIIR1_F16_FAsmRam(frac16_t f16InX, GDFLIB_FILTER_IIR1_T_F32 *psParam);
 
 /***************************************************************************//*!
 *
@@ -71,11 +75,12 @@ extern frac16_t GDFLIB_FilterIIR1_F16_FAsm(frac16_t f16InX, GDFLIB_FILTER_IIR1_T
 * @return N/A 
 *        
 *******************************************************************************/
- static inline void GDFLIB_FilterIIR1Init_F16_FCi(GDFLIB_FILTER_IIR1_T_F32 *psParam)
- {
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GDFLIB_FilterIIR1Init_F16_FCi(GDFLIB_FILTER_IIR1_T_F32 *psParam)
+{
     psParam->f32FltBfrY[0] = (frac32_t)0;    
     psParam->f16FltBfrX[0] = (frac16_t)0;
- }
+}
 /***************************************************************************//*!
 *
 * @brief  16-bit input and output 1st order IIR filter
@@ -117,8 +122,9 @@ extern frac16_t GDFLIB_FilterIIR1_F16_FAsm(frac16_t f16InX, GDFLIB_FILTER_IIR1_T
 *   All A coefficients must be negated, i.e. if the desired a2 coefficient 
 *   is 1.789, the value is then: a2 = FRAC32(-1.789 / 2.0);
 *
-*******************************************************************************/
-static inline frac16_t GDFLIB_FilterIIR1_F16_FCi(frac16_t f16InX,
+******************************************************************************/
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t GDFLIB_FilterIIR1_F16_FCi(frac16_t f16InX,
                                                  GDFLIB_FILTER_IIR1_T_F32 *psParam)
 {
     register frac32_t f32Acc;

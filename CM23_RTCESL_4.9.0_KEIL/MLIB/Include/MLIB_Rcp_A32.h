@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -33,14 +33,21 @@ extern "C" {
 /*******************************************************************************
 * Macros
 *******************************************************************************/  
-#define MLIB_Rcp1_A32s_C(f16Denom) MLIB_Rcp1_A32s_FC(f16Denom)  
-#define MLIB_Rcp_A32s_C(f16Denom)  MLIB_Rcp_A32s_FC(f16Denom)  
+#define MLIB_Rcp_A32s_C(f16Denom)     MLIB_Rcp_A32s_FC(f16Denom)
+#define MLIB_Rcp_A32s_CRam(f16Denom)  MLIB_Rcp_A32s_FCRam(f16Denom)
+#define MLIB_Rcp1_A32s_C(f16Denom)    MLIB_Rcp1_A32s_FC(f16Denom)
+#define MLIB_Rcp1_A32s_CRam(f16Denom) MLIB_Rcp1_A32s_FCRam(f16Denom)
 
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/  
-extern acc32_t MLIB_Rcp1_A32s_FC(register frac16_t f16Denom);
 extern acc32_t MLIB_Rcp_A32s_FC(register frac16_t f16Denom);
+RAM_FUNC_LIB
+extern acc32_t MLIB_Rcp_A32s_FCRam(register frac16_t f16Denom);
+
+extern acc32_t MLIB_Rcp1_A32s_FC(register frac16_t f16Denom);
+RAM_FUNC_LIB
+extern acc32_t MLIB_Rcp1_A32s_FCRam(register frac16_t f16Denom);
  
 #if defined(__cplusplus)
 }

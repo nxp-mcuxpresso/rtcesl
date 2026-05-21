@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -42,7 +42,8 @@ extern "C" {
 * Converts 32-bit number into 16-bit with rounding
 * Without saturation
 *******************************************************************************/   
-static inline frac16_t MLIB_Rnd_F16l_FCi(register frac32_t f32Val)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Rnd_F16l_FCi(register frac32_t f32Val)
 {
     return(frac16_t)MLIB_Conv_F16l_Ci(MLIB_Add_F32_Ci(f32Val, (frac32_t)0x00008000));
 }

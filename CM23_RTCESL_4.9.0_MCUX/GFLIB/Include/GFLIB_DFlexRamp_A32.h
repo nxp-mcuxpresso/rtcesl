@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -32,12 +32,16 @@ extern "C" {
 /******************************************************************************
 * Macros 
 ******************************************************************************/
-#define GFLIB_DFlexRampInit_F16_C(f16InitVal, psParam)                                                 \
-        GFLIB_DFlexRampInit_F16_FC(f16InitVal, psParam)
-#define GFLIB_DFlexRampCalcIncr_F16_C(f16Target, a32Duration, f32IncrSatMot, f32IncrSatGen, psParam)   \
-        GFLIB_DFlexRampCalcIncr_F16_FC(f16Target, a32Duration, f32IncrSatMot, f32IncrSatGen, psParam)
-#define GFLIB_DFlexRamp_F16_C(f16Instant, pbStopFlagMot, pbStopFlagGen, psParam)                       \
+#define GFLIB_DFlexRampInit_F16_Ci(f16InitVal, psParam)                                                   \
+        GFLIB_DFlexRampInit_F16_FCi(f16InitVal, psParam)                                                                                                    
+#define GFLIB_DFlexRampCalcIncr_F16_C(f16Target, a32Duration, f32IncrSatMot, f32IncrSatGen, psParam)      \
+        GFLIB_DFlexRampCalcIncr_F16_FC(f16Target, a32Duration, f32IncrSatMot, f32IncrSatGen, psParam)     
+#define GFLIB_DFlexRamp_F16_C(f16Instant, pbStopFlagMot, pbStopFlagGen, psParam)                          \
         GFLIB_DFlexRamp_F16_FC(f16Instant, pbStopFlagMot, pbStopFlagGen, psParam)
+#define GFLIB_DFlexRampCalcIncr_F16_CRam(f16Target, a32Duration, f32IncrSatMot, f32IncrSatGen, psParam)   \
+        GFLIB_DFlexRampCalcIncr_F16_FCRam(f16Target, a32Duration, f32IncrSatMot, f32IncrSatGen, psParam)
+#define GFLIB_DFlexRamp_F16_CRam(f16Instant, pbStopFlagMot, pbStopFlagGen, psParam)                       \
+        GFLIB_DFlexRamp_F16_FCRam(f16Instant, pbStopFlagMot, pbStopFlagGen, psParam)
 
 /******************************************************************************
 * Types
@@ -63,11 +67,22 @@ extern void GFLIB_DFlexRampCalcIncr_F16_FC(frac16_t f16Target,
                                            frac32_t f32IncrSatMot,
                                            frac32_t f32IncrSatGen,
                                            GFLIB_DFLEXRAMP_T_F32 *psParam);
-
+RAM_FUNC_LIB 
+extern void GFLIB_DFlexRampCalcIncr_F16_FCRam(frac16_t f16Target,
+                                              acc32_t a32Duration,
+                                              frac32_t f32IncrSatMot,
+                                              frac32_t f32IncrSatGen,
+                                              GFLIB_DFLEXRAMP_T_F32 *psParam);
+										   
 extern frac16_t GFLIB_DFlexRamp_F16_FC(frac16_t f16Instant,
                                        const bool_t *pbStopFlagMot,
                                        const bool_t *pbStopFlagGen,
-                                       GFLIB_DFLEXRAMP_T_F32 *psParam);
+                                       GFLIB_DFLEXRAMP_T_F32 *psParam);										   
+RAM_FUNC_LIB 
+extern frac16_t GFLIB_DFlexRamp_F16_FCRam(frac16_t f16Instant,
+                                          const bool_t *pbStopFlagMot,
+                                          const bool_t *pbStopFlagGen,
+                                          GFLIB_DFLEXRAMP_T_F32 *psParam);
 
 
 /******************************************************************************
@@ -96,9 +111,9 @@ extern frac16_t GFLIB_DFlexRamp_F16_FC(frac16_t f16Instant,
 *       
 * @remarks The initialization value is stored into the f32State variable and the bReachFlag flag is cleared.
 *
-****************************************************************************/
-static inline void GFLIB_DFlexRampInit_F16_FC(register frac16_t f16InitVal,
-                                              register GFLIB_DFLEXRAMP_T_F32 *psParam)
+****************************************************************************/ 
+RTCESL_INLINE static inline void GFLIB_DFlexRampInit_F16_FCi(register frac16_t f16InitVal,
+                                                             register GFLIB_DFLEXRAMP_T_F32 *psParam)
 {
     psParam -> f32State = MLIB_Conv_F32s(f16InitVal);
     psParam -> bReachFlag = FALSE;   

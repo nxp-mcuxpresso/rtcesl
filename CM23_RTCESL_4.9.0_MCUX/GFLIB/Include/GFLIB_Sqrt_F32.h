@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -31,16 +31,20 @@ extern "C" {
 *******************************************************************************/
 #include "gflib_types.h"
 #include "mlib.h"
+/*******************************************************************************
+* Macros 
+*******************************************************************************/  
+#define GFLIB_Sqrt_F16l_C(f32Val)    GFLIB_Sqrt_F16l_FC(f32Val)
+#define GFLIB_Sqrt_F16l_CRam(f32Val) GFLIB_Sqrt_F16l_FCRam(f32Val)
 
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
 extern frac16_t GFLIB_Sqrt_F16l_FC(frac32_t f32Val);
 
-/*******************************************************************************
-* Macros 
-*******************************************************************************/  
-#define GFLIB_Sqrt_F16l_C(f32Val) GFLIB_Sqrt_F16l_FC(f32Val)
+RAM_FUNC_LIB
+extern frac16_t GFLIB_Sqrt_F16l_FCRam(frac32_t f32Val);
+
 
 #if defined(__cplusplus)
 }

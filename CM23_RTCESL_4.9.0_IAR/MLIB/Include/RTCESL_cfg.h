@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -29,45 +29,99 @@ extern "C" {
 /*******************************************************************************
 * RTCESL vesion 
 *******************************************************************************/  
-/* RTCESL version is 4.8.1 */  
-#define RTCESL_VERSION 4.8.1
+/* RTCESL version is 4.9.0 */  
+#define RTCESL_VERSION 4.9.0
 
     
 /*******************************************************************************
 * Macros 
 *******************************************************************************/  
-   
+/* RAMFUNC macros */
+#if defined(__IAR_SYSTEMS_ICC__)
+#elif defined(__GNUC__)
+  #define __SECTION(type, bank) __attribute__ ((section("." #type ".$" #bank)))
+  #define __RAMFUNC(bank) __SECTION(ramfunc, bank)
+#endif
+
+#define RTCESL_ON 1
+#define RTCESL_OFF 0
     
 /*******************************************************************************
 * User Modified Macros 
-*******************************************************************************/     
+*******************************************************************************/
+#if (defined (RTCESL_MAU_ON))   
+    #define RTCESL_MAU RTCESL_ON
+#elif (defined (RTCESL_MAU_OFF))
+    #define RTCESL_MAU RTCESL_OFF
+#else    
+    /* User option to enable or disable MAU module when IDE preprocessor setting 
+    *  was not used. Set the following define as RTCESL_ON or RTCESL_OFF to enable or  
+    *  disable hardware MAU support. */  
+
+    /* Some devices for example MCXA344 or MCXA343 with different MAU module type require to define
+    *  the RTCESL_MAU_INDIRECT_IS_LOW_ADDR0 define. User shall verify the MAU module type and
+    *  its register from Reference Manual. If it is not defined a HardFault exception occurs. */
     
+    /* Next line can be modified by user */
+    #define RTCESL_MAU RTCESL_OFF
+    
+#endif     
+
+/* Warning if RTCESL_MAU was not correctly defined */   
+#ifndef RTCESL_MAU 
+    #warning "RTCESL_MAU was not defined !" 
+#endif    
+/* Warning if RTCESL_MAU_ON and RTCESL_MAU_OFF are defined in IDE */       
+#if defined(RTCESL_MAU_ON) && defined(RTCESL_MAU_OFF)
+    #warning "Wrong configuration RTCESL_MAU_ON and RTCESL_MAU_OFF are defined !" 
+#endif
+
 /* Inline assembler function optimization setting */  
 /* Only for functions written as inline assembler. The setting can be changed, but the RTCESL was tested
-   with following original setting. In case of any change the functionality is not guaranteed.  */ 
+   with following original setting. In case of any change the functionality is not guaranteed.  
+   This is a solution for the ARM(KEIL) compiler issue of passing function parameter on to the function 
+   when maximum speed optimization is used. Therefore optimization level is decreased and no save/restore 
+   pragma is used for inline assembler functions in ARM(KEIL). For IAR and GCC no inline function optimization 
+   change is done */ 
    
-#if defined(__IAR_SYSTEMS_ICC__)                         /* For IAR compiler   */
-    #define RTCESL_INLINE_OPTIM_SAVE                     /* Save original level - no value */
-    #define RTCESL_INLINE_OPTIM_SET                      /* Set specific level */
-    #define RTCESL_INLINE_OPTIM_RESTORE                  /* Restore original level - no value*/
-#elif defined(__CC_ARM)                                  /* For ARM(KEIL) version < 6 compiler */
-    #define RTCESL_INLINE_OPTIM_SAVE                     /* Save original level - no value */
-    #define RTCESL_INLINE_OPTIM_SET                      /* Set specific level */
-    #define RTCESL_INLINE_OPTIM_RESTORE                  /* Restore original level - no value*/
-#elif defined(__GNUC__) && defined(__ARMCC_VERSION)      /* For ARM(KEIL) version >= 6 compiler */ 
-    #define RTCESL_INLINE_OPTIM_SAVE                     /* Save original level - no value */
-    #define RTCESL_INLINE_OPTIM_SET                      /* Set specific level */
-    #define RTCESL_INLINE_OPTIM_RESTORE                  /* Restore original level - no value*/
-#elif defined(__GNUC__)                                  /* For GCC compiler */ 
-    #define RTCESL_INLINE_OPTIM_SAVE                     /* Save original level - no value */
-    #define RTCESL_INLINE_OPTIM_SET                      /* Set specific level */
-    #define RTCESL_INLINE_OPTIM_RESTORE                  /* Restore original level - no value*/
-#else                                                    /* Other compiler used */
+#if defined(__IAR_SYSTEMS_ICC__)                                    /* For IAR compiler   */
+    #define RTCESL_INLINE_OPTIM_SAVE                                /* Save original level - no value */
+    #define RTCESL_INLINE_OPTIM_SET _Pragma("optimize=none")        /* Set lower optimatization level */
+    #define RTCESL_INLINE_OPTIM_RESTORE                             /* Restore original level - no value*/
+    #define RAM_FUNC_NAME __ramfunc                                 /* Ram function */
+    #define RTCESL_INLINE                                           /* Always inline option to force function inline */  
+#elif defined(__CC_ARM)                                             /* For ARM(KEIL) compiler */
+    #define RTCESL_INLINE_OPTIM_SAVE                                /* No saving the original level - issue */
+    #define RTCESL_INLINE_OPTIM_SET _Pragma("O0")                   /* Set lower optimatization level */
+    #define RTCESL_INLINE_OPTIM_RESTORE                             /* No restoring the original level - issue */
+    #define RAM_FUNC_NAME                                           /* Ram function */
+    #define RTCESL_INLINE __attribute__((always_inline))            /* Always inline option to force function inline */ 
+#elif defined(__GNUC__) && (__ARMCC_VERSION)                        /* For ARM(KEIL) version >= 6 compiler */
+    #define RTCESL_INLINE_OPTIM_SAVE                                /* Save original level - no value*/
+    #define RTCESL_INLINE_OPTIM_SET                                 /* Set highest level - no value*/
+    #define RTCESL_INLINE_OPTIM_RESTORE                             /* Restore original level - no value*/
+    #define RAM_FUNC_NAME __attribute__ ((section ("ram")))         /* Ram function */
+    #define RTCESL_INLINE                                           /* Always inline option to force function inline */ 
+#elif defined(__GNUC__)                                             /* For GCC compiler */ 
+    #define RTCESL_INLINE_OPTIM_SAVE                                /* Save original level - no value */
+    #define RTCESL_INLINE_OPTIM_SET __attribute__((optimize("O0"))) /* Set lower optimatization level */
+    #define RTCESL_INLINE_OPTIM_RESTORE                             /* Restore original level - no value*/
+    #define RAM_FUNC_NAME __RAMFUNC(RAM)                            /* Ram function */
+    #define RTCESL_INLINE __attribute__((always_inline))            /* Always inline option to force function inline */ 
+#else                                                               /* Other compiler used */
     #warning "Unsupported compiler/IDE used !"    
-#endif         
-
-#define RAM_FUNC_LIB                              /* function executed from ROM */
-
+#endif       
+  
+/* Executing functions from RAM/ROM for RT devices to speed up function execution. If some functions should
+be executed from RAM for higher speed the user must define
+#define RAM_RELOCATION
+define. */
+#if defined(RAM_RELOCATION)                           /* All functions will be stored in variable memories*/
+    #define RAM_FUNC_LIB             RAM_FUNC_NAME    /* function executed from RAM */
+#else                                                 /* All functions will be stored in flash memories*/
+    #define RAM_FUNC_LIB                              /* function executed from ROM */
+#endif
+  
 #if defined(__cplusplus)
 }
 #endif

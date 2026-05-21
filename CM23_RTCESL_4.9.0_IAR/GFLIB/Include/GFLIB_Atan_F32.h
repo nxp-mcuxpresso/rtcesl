@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,6 +35,7 @@ extern "C" {
 * Macros 
 *******************************************************************************/
 #define GFLIB_Atan_F16_Asm(f16Val) GFLIB_Atan_F16_FAsm(f16Val, &gsAtanCoef)
+#define GFLIB_Atan_F16_AsmRam(f16Val) GFLIB_Atan_F16_FAsmRam(f16Val, &gsAtanCoef)
     
 /*******************************************************************************
 * Types
@@ -57,7 +58,10 @@ extern GFLIB_CONST GFLIB_ATAN_T_F32 gsAtanCoef;
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
-extern frac16_t GFLIB_Atan_F16_FAsm(frac16_t f16Val, const GFLIB_ATAN_T_F32 *psParam);
+extern frac16_t GFLIB_Atan_F16_FAsm(frac16_t f16Val, const GFLIB_ATAN_T_F32 *const psParam);
+
+RAM_FUNC_LIB 
+extern frac16_t GFLIB_Atan_F16_FAsmRam(frac16_t f16Val, GFLIB_ATAN_T_F32 *psParam);
 
 #if defined(__cplusplus)
 }

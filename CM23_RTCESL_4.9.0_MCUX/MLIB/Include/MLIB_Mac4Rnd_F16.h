@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -44,7 +44,8 @@ extern "C" {
 * f16Out = (f16Add1Mul1 * f16Add1Mul2) + (f16Add2Mul1 * f16Add2Mul2)
 * Without saturation
 *******************************************************************************/
-static inline frac16_t MLIB_Mac4Rnd_F16_FCi(register frac16_t f16Add1Mul1, register frac16_t f16Add1Mul2, 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Mac4Rnd_F16_FCi(register frac16_t f16Add1Mul1, register frac16_t f16Add1Mul2, 
                                             register frac16_t f16Add2Mul1, register frac16_t f16Add2Mul2)
 {
     return(frac16_t)MLIB_ShR_F32_Ci(((MLIB_Add_F32_Ci((int32_t)(f16Add1Mul1)*(int32_t)(f16Add1Mul2),

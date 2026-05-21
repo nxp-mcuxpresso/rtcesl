@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -41,7 +41,8 @@ extern "C" {
 * a32Out = - a32Accum + ( f16Mult1 * f16Mult2)
 *
 *******************************************************************************/  
-static inline acc32_t MLIB_MnacRnd_A32ass_FCi(register acc32_t a32Accum, 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline acc32_t MLIB_MnacRnd_A32ass_FCi(register acc32_t a32Accum, 
                                               register frac16_t f16Mult1, register frac16_t f16Mult2)
 {
     register acc32_t a32Temp;

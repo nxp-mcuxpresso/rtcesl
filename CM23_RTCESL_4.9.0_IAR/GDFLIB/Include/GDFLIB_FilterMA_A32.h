@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -36,6 +36,8 @@ extern "C" {
 *******************************************************************************/
 #define GDFLIB_FilterMAInit_F16_Ci(f16InitVal, psParam)                       \
         GDFLIB_FilterMAInit_F16_FCi(f16InitVal, psParam)                      
+#define GDFLIB_FilterMA_F16_Ci(f16InX, psParam)                               \
+        GDFLIB_FilterMA_F16_FCi(f16InX, psParam)
 
 /*******************************************************************************
 * Types
@@ -53,7 +55,8 @@ typedef struct{
 *         ptr  GDFLIB_FILTER_MA_T_A32 *psParam - pointer to filter structure 
 *
 *******************************************************************************/
-static inline void GDFLIB_FilterMAInit_F16_FCi(frac16_t f16InitVal,
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GDFLIB_FilterMAInit_F16_FCi(frac16_t f16InitVal,
                                                GDFLIB_FILTER_MA_T_A32 *psParam)
 {
     psParam->a32Acc = (acc32_t)MLIB_ShLSat_F32(f16InitVal, psParam->u16Sh) - (acc32_t)f16InitVal; 

@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,14 +35,22 @@ extern "C" {
   
 /******************************************************************************
 * Macros 
-******************************************************************************/
-#define GFLIB_AtanYX_F16_Asm(f16Y, f16X, pbErrFlag) GFLIB_AtanYX_F16_FAsm(f16Y, f16X, pbErrFlag, &gsAtanCoef)
+******************************************************************************/                         
+#define GFLIB_AtanYX_F16_Asm(f16Y, f16X, pbErrFlag)                          \
+        GFLIB_AtanYX_F16_FAsm(f16Y, f16X, pbErrFlag, &gsAtanCoef)
+#define GFLIB_AtanYX_F16_AsmRam(f16Y, f16X, pbErrFlag)                       \
+        GFLIB_AtanYX_F16_FAsmRam(f16Y, f16X, pbErrFlag, &gsAtanCoef)
 
 /****************************************************************************
 * Exported function prototypes
 ****************************************************************************/
-extern frac16_t GFLIB_AtanYX_F16_FAsm(frac16_t f16Y, frac16_t f16X, bool_t *pbErrFlag, const GFLIB_ATAN_T_F32 *GFLIB_CONST psParam);
-
+extern frac16_t GFLIB_AtanYX_F16_FAsm(frac16_t f16Y, frac16_t f16X, 
+                                      bool_t *pbErrFlag, 
+                                      const GFLIB_ATAN_T_F32 *const psParam);
+RAM_FUNC_LIB 
+extern frac16_t GFLIB_AtanYX_F16_FAsmRam(frac16_t f16Y, frac16_t f16X, 
+                                         bool_t *pbErrFlag, 
+                                         GFLIB_ATAN_T_F32 * psParam);							  
 
 #if defined(__cplusplus)
 }

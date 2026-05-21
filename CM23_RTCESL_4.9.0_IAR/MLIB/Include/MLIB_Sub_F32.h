@@ -40,7 +40,8 @@ extern "C" {
 * f32Out = f32Min - f32Sub
 * Without saturation
 *******************************************************************************/ 
-static inline frac32_t MLIB_Sub_F32_FCi(register frac32_t f32Min, register frac32_t f32Sub)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_Sub_F32_FCi(register frac32_t f32Min, register frac32_t f32Sub)
 {
     return(f32Min - f32Sub);
 }

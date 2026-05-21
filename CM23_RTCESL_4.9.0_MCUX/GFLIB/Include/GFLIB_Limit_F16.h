@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -51,7 +51,8 @@ extern "C" {
 *           lower f16LLim limits. The upper limit must >= lower limit.
 *
 ****************************************************************************/  
-static inline frac16_t GFLIB_Limit_F16_FCi(frac16_t f16Val, 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t GFLIB_Limit_F16_FCi(frac16_t f16Val, 
                                            frac16_t f16LLim, frac16_t f16ULim)
 {
     if(f16Val > f16ULim) 

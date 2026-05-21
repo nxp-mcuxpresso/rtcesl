@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -38,16 +38,33 @@ extern "C" {
 /*******************************************************************************
 * Macros
 *******************************************************************************/
+#if ( defined(RAM_RELOCATION))
+
+#define PCLIB_Ctrl2P2ZInit_F16(psParam)          PCLIB_Ctrl2P2ZInit_F16_CRam(psParam)
+#define PCLIB_Ctrl2P2Z_F16(f16InErr, psParam)    PCLIB_Ctrl2P2Z_F16_CRam(f16InErr, psParam)
+#define PCLIB_Ctrl3P3ZInit_F16(psParam)          PCLIB_Ctrl3P3ZInit_F16_CRam(psParam)
+#define PCLIB_Ctrl3P3Z_F16(f16InErr, psParam)    PCLIB_Ctrl3P3Z_F16_CRam(f16InErr, psParam)
+#define PCLIB_CtrlPIInit_F16(psParam)            PCLIB_CtrlPIInit_F16_CRam(psParam)
+#define PCLIB_CtrlPI_F16(f16InErr, psParam)      PCLIB_CtrlPI_F16_CRam(f16InErr, psParam)
+#define PCLIB_CtrlPIandLPInit_F16(psParam)       PCLIB_CtrlPIandLPInit_F16_CRam(psParam)
+#define PCLIB_CtrlPIandLP_F16(f16InErr, psParam) PCLIB_CtrlPIandLP_F16_CRam(f16InErr, psParam)
+#define PCLIB_CtrlPIDInit_F16(psParam)           PCLIB_CtrlPIDInit_F16_CRam(psParam)
+#define PCLIB_CtrlPID_F16(f16InErr, psParam)     PCLIB_CtrlPID_F16_CRam(f16InErr, psParam)
+
+#else
+	
 #define PCLIB_Ctrl2P2ZInit_F16(psParam)          PCLIB_Ctrl2P2ZInit_F16_C(psParam)
 #define PCLIB_Ctrl2P2Z_F16(f16InErr, psParam)    PCLIB_Ctrl2P2Z_F16_C(f16InErr, psParam)
 #define PCLIB_Ctrl3P3ZInit_F16(psParam)          PCLIB_Ctrl3P3ZInit_F16_C(psParam)
 #define PCLIB_Ctrl3P3Z_F16(f16InErr, psParam)    PCLIB_Ctrl3P3Z_F16_C(f16InErr, psParam)
-#define PCLIB_CtrlPIDInit_F16(psParam)           PCLIB_CtrlPIDInit_F16_C(psParam)
-#define PCLIB_CtrlPID_F16(f16InErr, psParam)     PCLIB_CtrlPID_F16_C(f16InErr, psParam)
 #define PCLIB_CtrlPIInit_F16(psParam)            PCLIB_CtrlPIInit_F16_C(psParam)
 #define PCLIB_CtrlPI_F16(f16InErr, psParam)      PCLIB_CtrlPI_F16_C(f16InErr, psParam)
 #define PCLIB_CtrlPIandLPInit_F16(psParam)       PCLIB_CtrlPIandLPInit_F16_C(psParam)
 #define PCLIB_CtrlPIandLP_F16(f16InErr, psParam) PCLIB_CtrlPIandLP_F16_C(f16InErr, psParam)
+#define PCLIB_CtrlPIDInit_F16(psParam)           PCLIB_CtrlPIDInit_F16_C(psParam)
+#define PCLIB_CtrlPID_F16(f16InErr, psParam)     PCLIB_CtrlPID_F16_C(f16InErr, psParam)
+
+#endif /* defined(RAM_RELOCATION) */
 
 #if defined(__cplusplus)
 }

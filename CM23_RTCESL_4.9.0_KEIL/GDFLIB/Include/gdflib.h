@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -36,20 +36,29 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/
+#if (defined(RAM_RELOCATION)) /* placed to RAM */
+#define GDFLIB_FilterIIR1_F16(f16InX, psParam)                                 \
+        GDFLIB_FilterIIR1_F16_AsmRam(f16InX, psParam)
+#define GDFLIB_FilterIIR2_F16(f16InX, psParam)                                 \
+        GDFLIB_FilterIIR2_F16_AsmRam(f16InX, psParam)
+#define GDFLIB_FilterIIR2Init_F16(psParam)                                     \
+        GDFLIB_FilterIIR2Init_F16_CRam(psParam)  
+#else /* placed to ROM */
+#define GDFLIB_FilterIIR1_F16(f16InX, psParam)                                 \
+        GDFLIB_FilterIIR1_F16_Asm(f16InX, psParam)
+#define GDFLIB_FilterIIR2_F16(f16InX, psParam)                                 \
+        GDFLIB_FilterIIR2_F16_Asm(f16InX, psParam)
+#define GDFLIB_FilterIIR2Init_F16(psParam)                                     \
+        GDFLIB_FilterIIR2Init_F16_C(psParam)  
+#endif /*(defined(RAM_RELOCATION)) */
 #define GDFLIB_FilterExpInit_F16(f16InX, psParam)                              \
         GDFLIB_FilterExpInit_F16_Ci(f16InX, psParam)     
 #define GDFLIB_FilterExp_F16(f16InX, psParam)                                  \
         GDFLIB_FilterExp_F16_Ci(f16InX, psParam)    
 #define GDFLIB_FilterIIR1Init_F16(psParam)                                     \
-        GDFLIB_FilterIIR1Init_F16_Ci(psParam)          
-#define GDFLIB_FilterIIR1_F16(f16InX, psParam)                                 \
-        GDFLIB_FilterIIR1_F16_Asm(f16InX, psParam)
-#define GDFLIB_FilterIIR2Init_F16(psParam)                                     \
-        GDFLIB_FilterIIR2Init_F16_C(psParam)           
-#define GDFLIB_FilterIIR2_F16(f16InX, psParam)                                 \
-        GDFLIB_FilterIIR2_F16_Asm(f16InX, psParam)
+        GDFLIB_FilterIIR1Init_F16_Ci(psParam)                   
 #define GDFLIB_FilterMAInit_F16(f16InitVal, psParam)                           \
-	GDFLIB_FilterMAInit_F16_Ci(f16InitVal, psParam)
+        GDFLIB_FilterMAInit_F16_Ci(f16InitVal, psParam)                        
 #define GDFLIB_FilterMA_F16(f16InX, psParam)                                   \
         GDFLIB_FilterMA_F16_Asmi(f16InX, psParam)
 

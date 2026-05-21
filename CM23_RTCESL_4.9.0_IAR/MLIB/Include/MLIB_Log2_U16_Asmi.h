@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -52,7 +52,8 @@ extern "C" {
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline uint16_t MLIB_Log2_U16_FAsmi(register uint16_t u16Val)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline uint16_t MLIB_Log2_U16_FAsmi(register uint16_t u16Val)
 {
     register uint16_t u16Log2 = 0;                      /* Initialization of u16Log2 */
 

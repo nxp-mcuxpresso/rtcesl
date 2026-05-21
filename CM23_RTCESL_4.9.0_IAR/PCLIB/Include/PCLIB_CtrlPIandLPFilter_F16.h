@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -30,8 +30,10 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/  
-#define PCLIB_CtrlPIandLPInit_F16_C(psParam)       PCLIB_CtrlPIandLPInit_F16_FC(psParam)
-#define PCLIB_CtrlPIandLP_F16_C(f16InErr, psParam) PCLIB_CtrlPIandLP_F16_FC(f16InErr, psParam)
+#define PCLIB_CtrlPIandLPInit_F16_C(psParam)          PCLIB_CtrlPIandLPInit_F16_FC(psParam)
+#define PCLIB_CtrlPIandLP_F16_C(f16InErr, psParam)    PCLIB_CtrlPIandLP_F16_FC(f16InErr, psParam)
+#define PCLIB_CtrlPIandLPInit_F16_CRam(psParam)       PCLIB_CtrlPIandLPInit_F16_FCRam(psParam)
+#define PCLIB_CtrlPIandLP_F16_CRam(f16InErr, psParam) PCLIB_CtrlPIandLP_F16_FCRam(f16InErr, psParam)
 
 /*******************************************************************************
 * Types
@@ -53,8 +55,12 @@ typedef struct
 * Exported function prototypes
 ****************************************************************************/
 extern void PCLIB_CtrlPIandLPInit_F16_FC(PCLIB_CTRL_PI_LP_T_F16 *psParam);
-extern frac16_t PCLIB_CtrlPIandLP_F16_FC(frac16_t f16InErr, PCLIB_CTRL_PI_LP_T_F16 *psParam);
+RAM_FUNC_LIB
+extern void PCLIB_CtrlPIandLPInit_F16_FCRam(PCLIB_CTRL_PI_LP_T_F16 *psParam);
 
+extern frac16_t PCLIB_CtrlPIandLP_F16_FC(frac16_t f16InErr, PCLIB_CTRL_PI_LP_T_F16 *psParam);
+RAM_FUNC_LIB
+extern frac16_t PCLIB_CtrlPIandLP_F16_FCRam(frac16_t f16InErr, PCLIB_CTRL_PI_LP_T_F16 *psParam);
 
 #if defined(__cplusplus)
 }

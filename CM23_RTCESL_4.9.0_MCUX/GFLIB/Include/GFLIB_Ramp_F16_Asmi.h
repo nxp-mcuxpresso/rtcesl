@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -59,7 +59,8 @@ extern "C" {
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline frac16_t GFLIB_Ramp_F16_FAsmi(frac16_t f16Target, GFLIB_RAMP_T_F16 *psParam)
+RAM_FUNC_LIB
+RTCESL_INLINE static inline frac16_t GFLIB_Ramp_F16_FAsmi(frac16_t f16Target, GFLIB_RAMP_T_F16 *psParam)
 {
     register frac32_t f32Val1=0, f32Val2=0;
 
@@ -95,69 +96,41 @@ static inline frac16_t GFLIB_Ramp_F16_FAsmi(frac16_t f16Target, GFLIB_RAMP_T_F16
                         "cmp %0, %2 \n\t"               /* Compares f32Val1 with f16Target */
                         "blt GFLIB_Ramp_F16_End%= \n\t" /* If f16Target < f32Val1, then executes next command */
                         "mov %0, %2 \n\t"               /* f16Target = f32Val1 */
-                        "b GFLIB_Ramp_F16_End%= \n\t"     /* Goes to the RampEnd label */
-                    "GFLIB_Ramp_F16_Down%=: \n\t"        
+                        "b GFLIB_Ramp_F16_End%= \n\t"   /* Goes to the RampEnd label */
+                        "GFLIB_Ramp_F16_Down%=: \n\t"        
                         "ldrh %3, [%1, #2] \n\t"        /* Loads psParam -> f16RampDown */
                         "subs %2, %2, %3 \n\t"          /* f32Val1 = f16State - f16RampDown */
                         "cmp %0, %2 \n\t"               /* Compares f32Val1 with f16Target */
                         "bgt GFLIB_Ramp_F16_End%= \n\t" /* If f16Target > f32Val1, then executes next command */
                         "mov %0, %2 \n\t"               /* f16Target = f32Val1 */
-                    "GFLIB_Ramp_F16_End%=: \n\t"                   
+                        "GFLIB_Ramp_F16_End%=: \n\t"                   
                         "strh %0, [%1, #4] \n\t"        /* Loads psParam -> f16State */
-                        : "+l"(f16Target), "+l"(psParam), "+l"(f32Val1), "+l"(f32Val2):);
-    #elif defined(__GNUC__)
-        __asm volatile(
-                        #if defined(__GNUC__)           /* For GCC compiler */
-                            ".syntax unified \n"        /* Using unified asm syntax */
-                        #endif
-                        "ldrh %2, [%1, #4] \n"          /* Loads psParam -> f16State */
-                        "sxth %2, %2 \n"                /* Transforms 16-bit value to 32-bit */
-                        "sxth %0, %0 \n"                /* Transforms 16-bit input value to 32-bit */
-                        "cmp %0, %2 \n"                 /* Compares f16Target with psParam -> f16State */
-                        "blt RampDown%= \n"             /* If f16Target < psParam -> f16State, then ramps down */
-                        "ldrh %3, [%1] \n"              /* Loads psParam -> f16RampUp */
-                        "adds %2, %2, %3 \n"            /* f32Val1 = f16State + f16RampUp */
-                        "cmp %0, %2 \n"                 /* Compares f32Val1 with f16Target */
-                        "blt RampEnd%= \n"              /* If f16Target < f32Val1, then executes next command */
-                        "mov %0, %2 \n"                 /* f16Target = f32Val1 */
-                        "b RampEnd%= \n"                /* Goes to the RampEnd label */
-                    "RampDown%=: \n"
-                        "ldrh %3, [%1, #2] \n"          /* Loads psParam -> f16RampDown */
-                        "subs %2, %2, %3 \n"            /* f32Val1 = f16State - f16RampDown */
-                        "cmp %0, %2 \n"                 /* Compares f32Val1 with f16Target */
-                        "bgt .+4 \n"                    /* If f16Target > f32Val1, then executes next command */
-                        "mov %0, %2 \n"                 /* f16Target = f32Val1 */
-                    "RampEnd%=: \n"
-                        "strh %0, [%1, #4] \n"          /* Loads psParam -> f16State */
-                        #if defined(__GNUC__)           /* For GCC compiler */
-                            ".syntax divided \n"
-                        #endif
                         : "+l"(f16Target), "+l"(psParam), "+l"(f32Val1), "+l"(f32Val2):);
     #else
         __asm volatile(
                         #if defined(__GNUC__)           /* For GCC compiler */
                             ".syntax unified \n"        /* Using unified asm syntax */
                         #endif
-                        "ldrh %2, [%1, #4] \n"          /* Loads psParam -> f16State */
-                        "sxth %2, %2 \n"                /* Transforms 16-bit value to 32-bit */
-                        "sxth %0, %0 \n"                /* Transforms 16-bit input value to 32-bit */
-                        "cmp %0, %2 \n"                 /* Compares f16Target with psParam -> f16State */
-                        "blt RampDown \n"               /* If f16Target < psParam -> f16State, then ramps down */
-                        "ldrh %3, [%1] \n"              /* Loads psParam -> f16RampUp */
-                        "adds %2, %2, %3 \n"            /* f32Val1 = f16State + f16RampUp */
-                        "cmp %0, %2 \n"                 /* Compares f32Val1 with f16Target */
-                        "blt RampEnd \n"                /* If f16Target < f32Val1, then executes next command */
-                        "mov %0, %2 \n"                 /* f16Target = f32Val1 */
-                        "b RampEnd \n"                  /* Goes to the RampEnd label */
-                    "RampDown: \n"
-                        "ldrh %3, [%1, #2] \n"          /* Loads psParam -> f16RampDown */
-                        "subs %2, %2, %3 \n"            /* f32Val1 = f16State - f16RampDown */
-                        "cmp %0, %2 \n"                 /* Compares f32Val1 with f16Target */
-                        "bgt .+4 \n"                    /* If f16Target > f32Val1, then executes next command */
-                        "mov %0, %2 \n"                 /* f16Target = f32Val1 */
-                    "RampEnd: \n"
-                        "strh %0, [%1, #4] \n"          /* Loads psParam -> f16State */
-                        #if defined(__GNUC__)           /* For GCC compiler */
+                        "ldrh %2, [%1, #4] \n"        /* Loads psParam -> f16State */
+                        "sxth %2, %2 \n"              /* Transforms 16-bit value to 32-bit */
+                        "sxth %0, %0 \n"              /* Transforms 16-bit input value to 32-bit */
+                        "cmp %0, %2 \n"               /* Compares f16Target with psParam -> f16State */
+                        "blt GFLIB_Ramp_F16_Down%= \n"/* If f16Target < psParam -> f16State, then ramps down */
+                        "ldrh %3, [%1] \n"            /* Loads psParam -> f16RampUp */
+                        "adds %2, %2, %3 \n"          /* f32Val1 = f16State + f16RampUp */
+                        "cmp %0, %2 \n"               /* Compares f32Val1 with f16Target */
+                        "blt GFLIB_Ramp_F16_End%= \n" /* If f16Target < f32Val1, then executes next command */
+                        "mov %0, %2 \n"               /* f16Target = f32Val1 */
+                        "b GFLIB_Ramp_F16_End%= \n"   /* Goes to the RampEnd label */
+                        "GFLIB_Ramp_F16_Down%=: \n"        
+                        "ldrh %3, [%1, #2] \n"        /* Loads psParam -> f16RampDown */
+                        "subs %2, %2, %3 \n"          /* f32Val1 = f16State - f16RampDown */
+                        "cmp %0, %2 \n"               /* Compares f32Val1 with f16Target */
+                        "bgt GFLIB_Ramp_F16_End%= \n" /* If f16Target > f32Val1, then executes next command */
+                        "mov %0, %2 \n"               /* f16Target = f32Val1 */
+                        "GFLIB_Ramp_F16_End%=: \n"                   
+                        "strh %0, [%1, #4] \n"        /* Loads psParam -> f16State */
+                        #if defined(__GNUC__)         /* For GCC compiler */
                             ".syntax divided \n"
                         #endif
                         : "+l"(f16Target), "+l"(psParam), "+l"(f32Val1), "+l"(f32Val2):);

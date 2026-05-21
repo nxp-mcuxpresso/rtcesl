@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2025 NXP
+* Copyright 2016-2021, 2025-2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,24 +35,47 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/
-#define MLIB_Div_F32ls_C(f32Num, f16Denom)     MLIB_Div_F32ls_FC(f32Num, f16Denom)    
-#define MLIB_Div_F16ls_Ci(f32Num, f16Denom)    MLIB_Div_F16ls_FCi(f32Num, f16Denom)
-#define MLIB_DivSat_F32ls_C(f32Num, f16Denom)  MLIB_DivSat_F32ls_FC(f32Num, f16Denom)    
-#define MLIB_DivSat_F16ls_Ci(f32Num, f16Denom) MLIB_DivSat_F16ls_FCi(f32Num, f16Denom)   
-#define MLIB_Div_F16ll_C(f32Num, f32Denom)     MLIB_Div_F16ll_FC(f32Num, f32Denom)    
-#define MLIB_Div_F32_C(f32Num, f32Denom)       MLIB_Div_F32_FC(f32Num, f32Denom)  
-#define MLIB_DivSat_F16ll_C(f32Num, f32Denom)  MLIB_DivSat_F16ll_FC(f32Num, f32Denom) 
-#define MLIB_DivSat_F32_C(f32Num, f32Denom)    MLIB_DivSat_F32_FC(f32Num, f32Denom)
+#define MLIB_Div_F32ls_C(f32Num, f16Denom)       MLIB_Div_F32ls_FC(f32Num, f16Denom)
+#define MLIB_Div_F32ls_CRam(f32Num, f16Denom)    MLIB_Div_F32ls_FCRam(f32Num, f16Denom)
+#define MLIB_Div_F16ls_Ci(f32Num, f16Denom)      MLIB_Div_F16ls_FCi(f32Num, f16Denom)
+#define MLIB_DivSat_F32ls_C(f32Num, f16Denom)    MLIB_DivSat_F32ls_FC(f32Num, f16Denom) 
+#define MLIB_DivSat_F32ls_CRam(f32Num, f16Denom) MLIB_DivSat_F32ls_FCRam(f32Num, f16Denom)   
+#define MLIB_DivSat_F16ls_Ci(f32Num, f16Denom)   MLIB_DivSat_F16ls_FCi(f32Num, f16Denom)
+#define MLIB_Div_F16ll_C(f32Num, f32Denom)       MLIB_Div_F16ll_FC(f32Num, f32Denom)    
+#define MLIB_Div_F16ll_CRam(f32Num, f32Denom)    MLIB_Div_F16ll_FCRam(f32Num, f32Denom)    
+#define MLIB_Div_F32_C(f32Num, f32Denom)         MLIB_Div_F32_FC(f32Num, f32Denom)  
+#define MLIB_Div_F32_CRam(f32Num, f32Denom)      MLIB_Div_F32_FCRam(f32Num, f32Denom)  
+#define MLIB_DivSat_F16ll_C(f32Num, f32Denom)    MLIB_DivSat_F16ll_FC(f32Num, f32Denom) 
+#define MLIB_DivSat_F16ll_CRam(f32Num, f32Denom) MLIB_DivSat_F16ll_FCRam(f32Num, f32Denom) 
+#define MLIB_DivSat_F32_C(f32Num, f32Denom)      MLIB_DivSat_F32_FC(f32Num, f32Denom)
+#define MLIB_DivSat_F32_CRam(f32Num, f32Denom)   MLIB_DivSat_F32_FCRam(f32Num, f32Denom)
     
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
-extern frac32_t MLIB_Div_F32ls_FC(frac32_t f32Num, frac16_t f16Denom);    
+extern frac32_t MLIB_Div_F32ls_FC(frac32_t f32Num, frac16_t f16Denom);   
+RAM_FUNC_LIB 
+extern frac32_t MLIB_Div_F32ls_FCRam(frac32_t f32Num, frac16_t f16Denom);  
+  
 extern frac32_t MLIB_DivSat_F32ls_FC(frac32_t f32Num, frac16_t f16Denom);   
+RAM_FUNC_LIB 
+extern frac32_t MLIB_DivSat_F32ls_FCRam(frac32_t f32Num, frac16_t f16Denom);  
+ 
 extern frac32_t MLIB_Div_F32_FC(frac32_t f32Num, frac32_t f32Denom);
+RAM_FUNC_LIB 
+extern frac32_t MLIB_Div_F32_FCRam(frac32_t f32Num, frac32_t f32Denom);
+
 extern frac16_t MLIB_Div_F16ll_FC(frac32_t f32Num, frac32_t f32Denom);
+RAM_FUNC_LIB 
+extern frac16_t MLIB_Div_F16ll_FCRam(frac32_t f32Num, frac32_t f32Denom);
+
 extern frac16_t MLIB_DivSat_F16ll_FC(frac32_t f32Num, frac32_t f32Denom);
+RAM_FUNC_LIB 
+extern frac16_t MLIB_DivSat_F16ll_FCRam(frac32_t f32Num, frac32_t f32Denom);
+
 extern frac32_t MLIB_DivSat_F32_FC(frac32_t f32Num, frac32_t f32Denom);
+RAM_FUNC_LIB 
+extern frac32_t MLIB_DivSat_F32_FCRam(frac32_t f32Num, frac32_t f32Denom);
 
 /***************************************************************************//*!
 * @brief  32-bit numerator, 16-bit denominator inputs 16-output 4-quadrant
@@ -71,7 +94,8 @@ extern frac32_t MLIB_DivSat_F32_FC(frac32_t f32Num, frac32_t f32Denom);
 *           0x7FFF.
 *
 *******************************************************************************/
-static inline frac16_t MLIB_Div_F16ls_FCi(register frac32_t f32Num, register frac16_t f16Denom)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Div_F16ls_FCi(register frac32_t f32Num, register frac16_t f16Denom)
 {
     if (f16Denom == 0)
     {
@@ -98,7 +122,8 @@ static inline frac16_t MLIB_Div_F16ls_FCi(register frac32_t f32Num, register fra
 *           to 0x7FFF or 0x8000 depending on the signs. 
 *
 *******************************************************************************/
-static inline frac16_t MLIB_DivSat_F16ls_FCi(register frac32_t f32Num, register frac16_t f16Denom)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_DivSat_F16ls_FCi(register frac32_t f32Num, register frac16_t f16Denom)
 {
     register frac32_t f32Return;
 

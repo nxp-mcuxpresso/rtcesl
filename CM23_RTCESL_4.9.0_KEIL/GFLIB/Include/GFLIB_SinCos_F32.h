@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,6 +35,7 @@ extern "C" {
 * Macros 
 *******************************************************************************/
 #define GFLIB_Sin_F16_Asm(f16Angle)              GFLIB_Sin_F16_FAsm(f16Angle, &gsSinCoef)
+#define GFLIB_Sin_F16_AsmRam(f16Angle)           GFLIB_Sin_F16_FAsmRam(f16Angle, &gsSinCoef)
 #define GFLIB_SinCos_F16_Ci(f16Angle, f16SinCos) GFLIB_SinCos_F16_FCi(f16Angle, f16SinCos)
 #define GFLIB_Cos_F16_Asmi(f16Angle)             GFLIB_Cos_F16_FAsmi(f16Angle)
 
@@ -55,22 +56,34 @@ extern GFLIB_CONST GFLIB_SIN_T_F32 gsSinCoef;
 * Exported function prototypes
 *******************************************************************************/
 extern frac16_t GFLIB_Sin_F16_FAsm(frac16_t f16Angle, GFLIB_CONST GFLIB_SIN_T_F32 *const psParam);
+RAM_FUNC_LIB
+extern frac16_t GFLIB_Sin_F16_FAsmRam(frac16_t f16Angle, GFLIB_CONST GFLIB_SIN_T_F32 *const psParam);
 
 /***************************************************************************//*!
 * Cosine is calculated using the GFLIB_Sin_F16 function summed with FRAC(0.5)
 *******************************************************************************/  
-static inline frac16_t GFLIB_Cos_F16_FAsmi(register frac16_t f16Angle)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t GFLIB_Cos_F16_FAsmi(register frac16_t f16Angle)
 {
+#if (defined(RAM_RELOCATION)) /* placed to RAM */
+    return(GFLIB_Sin_F16_AsmRam((f16Angle +(frac16_t)16384)));
+#else /* Placed to ROM */
     return(GFLIB_Sin_F16_Asm((f16Angle +(frac16_t)16384)));
-}
-
+#endif
+}	
 /*******************************************************************************
 * Sine and cosine functions
 *******************************************************************************/
-static inline void GFLIB_SinCos_F16_FCi(register frac16_t f16Angle, register GMCLIB_2COOR_SINCOS_T_F16 *f16SinCos)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline void GFLIB_SinCos_F16_FCi(register frac16_t f16Angle, register GMCLIB_2COOR_SINCOS_T_F16 *f16SinCos)
 {   
+#if (defined(RAM_RELOCATION)) /* placed to RAM */
+    f16SinCos->f16Sin = GFLIB_Sin_F16_AsmRam(f16Angle);
+    f16SinCos->f16Cos = GFLIB_Sin_F16_AsmRam((f16Angle +(frac16_t)16384)); 
+#else /* Placed to ROM */
     f16SinCos->f16Sin = GFLIB_Sin_F16_Asm(f16Angle);
-    f16SinCos->f16Cos = GFLIB_Sin_F16_Asm((f16Angle +(frac16_t)16384)); 	   
+    f16SinCos->f16Cos = GFLIB_Sin_F16_Asm((f16Angle +(frac16_t)16384)); 
+#endif
 } 
  
 #if defined(__cplusplus)

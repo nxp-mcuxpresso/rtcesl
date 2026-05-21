@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,11 +35,13 @@ extern "C" {
 * Macros 
 *******************************************************************************/
 #define GDFLIB_FilterIIR2Init_F16_C(psParam)                                  \
-        GDFLIB_FilterIIR2Init_F16_FC(psParam)                                 
-#define GDFLIB_FilterIIR2_F16_C(f16InX, psParam)                              \
-        GDFLIB_FilterIIR2_F16_FC(f16InX, psParam)                             
+        GDFLIB_FilterIIR2Init_F16_FC(psParam)   
+#define GDFLIB_FilterIIR2Init_F16_CRam(psParam)                               \
+        GDFLIB_FilterIIR2Init_F16_FCRam(psParam)		
 #define GDFLIB_FilterIIR2_F16_Asm(f16InX, psParam)                            \
         GDFLIB_FilterIIR2_F16_FAsm(f16InX, psParam)
+#define GDFLIB_FilterIIR2_F16_AsmRam(f16InX, psParam)                         \
+        GDFLIB_FilterIIR2_F16_FAsmRam(f16InX, psParam)
 /*******************************************************************************
 * Types
 *******************************************************************************/
@@ -63,10 +65,16 @@ typedef struct
 * Exported function prototypes
 *******************************************************************************/ 
 void GDFLIB_FilterIIR2Init_F16_FC(GDFLIB_FILTER_IIR2_T_F32 *psParam);
-frac16_t GDFLIB_FilterIIR2_F16_FC(frac16_t f16InX,
-                                  GDFLIB_FILTER_IIR2_T_F32 *psParam);
+
+RAM_FUNC_LIB 
+void GDFLIB_FilterIIR2Init_F16_FCRam(GDFLIB_FILTER_IIR2_T_F32 *psParam);
+
 frac16_t GDFLIB_FilterIIR2_F16_FAsm(frac16_t f16InX,
                                     GDFLIB_FILTER_IIR2_T_F32 *psParam);
+
+RAM_FUNC_LIB 
+frac16_t GDFLIB_FilterIIR2_F16_FAsmRam(frac16_t f16InX,
+                                       GDFLIB_FILTER_IIR2_T_F32 *psParam);
                                   
 #if defined(__cplusplus)
 }

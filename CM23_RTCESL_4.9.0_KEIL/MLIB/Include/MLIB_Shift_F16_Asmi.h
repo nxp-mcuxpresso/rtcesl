@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -48,7 +48,8 @@ extern "C" {
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline frac16_t MLIB_Sh1LSat_F16_FAsmi(register frac16_t f16Val)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_Sh1LSat_F16_FAsmi(register frac16_t f16Val)
 {
     register frac16_t f16TestVal=0, f16Out=0;
 
@@ -123,7 +124,8 @@ RTCESL_INLINE_OPTIM_RESTORE
 /* inline function without any optimization (compilation issue) */ 
 RTCESL_INLINE_OPTIM_SAVE
 RTCESL_INLINE_OPTIM_SET
-static inline frac16_t MLIB_ShLSat_F16_FAsmi(register frac16_t f16Val, register uint16_t u16Sh)
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac16_t MLIB_ShLSat_F16_FAsmi(register frac16_t f16Val, register uint16_t u16Sh)
 {
     register frac16_t f16SatVal=0, f16CmpVal=0;
 

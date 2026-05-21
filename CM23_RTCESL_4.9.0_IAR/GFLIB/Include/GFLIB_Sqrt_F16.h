@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -35,7 +35,8 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/
-#define GFLIB_Sqrt_F16_C(f16Val) GFLIB_Sqrt_F16_FC(f16Val, &gsSqrtTable_F32)
+#define GFLIB_Sqrt_F16_C(f16Val)    GFLIB_Sqrt_F16_FC(f16Val, &gsSqrtTable_F32)
+#define GFLIB_Sqrt_F16_CRam(f16Val) GFLIB_Sqrt_F16_FCRam(f16Val, &gsSqrtTable_F32)
 
 /******************************************************************************
 * Types
@@ -73,6 +74,10 @@ typedef struct
 *******************************************************************************/
 extern frac16_t GFLIB_Sqrt_F16_FC(frac16_t f16Val,
                                   const GFLIB_SQRT_TABLE_T_F32 *psParam);
+RAM_FUNC_LIB
+extern frac16_t GFLIB_Sqrt_F16_FCRam(frac16_t f16Val,
+                                     GFLIB_SQRT_TABLE_T_F32 *psParam);								  
+
 extern GFLIB_SQRT_TABLE_T_F32 gsSqrtTable_F32;
 
 #if defined(__cplusplus)
@@ -80,3 +85,4 @@ extern GFLIB_SQRT_TABLE_T_F32 gsSqrtTable_F32;
 #endif
 
 #endif /* _GFLIB_SQRT_F16_H_ */
+

@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -41,7 +41,8 @@ extern "C" {
 *  f16Out = |f16In|
 *  not saturated
 *******************************************************************************/
-static inline frac16_t MLIB_Abs_F16_FCi(register frac16_t f16Val)
+RAM_FUNC_LIB
+RTCESL_INLINE static inline frac16_t MLIB_Abs_F16_FCi(register frac16_t f16Val)
 {
     return((f16Val < (frac16_t)0) ? (-f16Val) : (f16Val));
 }
@@ -49,7 +50,8 @@ static inline frac16_t MLIB_Abs_F16_FCi(register frac16_t f16Val)
 *  Absolute value saturated
 *  f16Out = |f16In|
 *******************************************************************************/
-static inline frac16_t MLIB_AbsSat_F16_FCi(register frac16_t f16Val)
+RAM_FUNC_LIB
+RTCESL_INLINE static inline frac16_t MLIB_AbsSat_F16_FCi(register frac16_t f16Val)
 {
     register int16_t i16Temp;
   

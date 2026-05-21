@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2025 NXP
+* Copyright 2016-2021, 2025-2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -33,14 +33,21 @@ extern "C" {
 /*******************************************************************************
 * Macros 
 *******************************************************************************/  
-#define MLIB_Div_F16_C(f16Num, f16Denom)    MLIB_Div_F16_FC(f16Num, f16Denom) 
-#define MLIB_DivSat_F16_C(f16Num, f16Denom) MLIB_DivSat_F16_FC(f16Num, f16Denom)
-    
+#define MLIB_Div_F16_C(f16Num, f16Denom)       MLIB_Div_F16_FC(f16Num, f16Denom) 
+#define MLIB_DivSat_F16_C(f16Num, f16Denom)    MLIB_DivSat_F16_FC(f16Num, f16Denom)
+#define MLIB_Div_F16_CRam(f16Num, f16Denom)    MLIB_Div_F16_FCRam(f16Num, f16Denom) 
+#define MLIB_DivSat_F16_CRam(f16Num, f16Denom) MLIB_DivSat_F16_FCRam(f16Num, f16Denom)    
+
 /*******************************************************************************
 * Exported function prototypes
 *******************************************************************************/
-extern frac16_t MLIB_Div_F16_FC(frac16_t f16Num, frac16_t f16Denom);    
-extern frac16_t MLIB_DivSat_F16_FC(frac16_t f16Num, frac16_t f16Denom);    
+extern frac16_t MLIB_Div_F16_FC(frac16_t f16Num, frac16_t f16Denom);
+RAM_FUNC_LIB
+extern frac16_t MLIB_Div_F16_FCRam(frac16_t f16Num, frac16_t f16Denom);
+
+extern frac16_t MLIB_DivSat_F16_FC(frac16_t f16Num, frac16_t f16Denom);
+RAM_FUNC_LIB
+extern frac16_t MLIB_DivSat_F16_FCRam(frac16_t f16Num, frac16_t f16Denom);
 
 #if defined(__cplusplus)
 }

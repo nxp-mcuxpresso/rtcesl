@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -43,7 +43,8 @@ extern "C" {
 * f32Out = f32Accum - ( f16Mult1 * f16Mult2)
 * Without saturation
 *******************************************************************************/
-static inline frac32_t MLIB_Msu_F32lss_FCi(register frac32_t f32Accum, 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_Msu_F32lss_FCi(register frac32_t f32Accum, 
                                            register frac16_t f16Mult1, register frac16_t f16Mult2)
 {
     frac32_t f32Temp;  

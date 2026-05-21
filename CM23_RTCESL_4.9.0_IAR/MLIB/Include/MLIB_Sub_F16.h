@@ -48,7 +48,8 @@ extern "C" {
 #else                            /* set no optimization for GCC(KDS) compiler */
     #pragma GCC optimize ("O0")                  
 #endif
-static inline frac16_t MLIB_Sub_F16_FCi(register frac16_t f16Min, register frac16_t f16Sub)
+RAM_FUNC_LIB
+RTCESL_INLINE static inline frac16_t MLIB_Sub_F16_FCi(register frac16_t f16Min, register frac16_t f16Sub)
 {
     return(f16Min - f16Sub);
 }

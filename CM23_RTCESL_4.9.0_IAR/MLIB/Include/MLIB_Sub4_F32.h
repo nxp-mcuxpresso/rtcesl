@@ -1,7 +1,7 @@
 /*******************************************************************************
 *
 * Copyright (c) 2013 - 2016, Freescale Semiconductor, Inc.
-* Copyright 2016-2021, 2024 NXP
+* Copyright 2016-2021, 2024, 2026 NXP
 *
 * NXP Proprietary. This software is owned or controlled by NXP and may
 * only be used strictly in accordance with the applicable license terms. 
@@ -42,7 +42,8 @@ extern "C" {
 *  f32Out = f32Min + f32Sub1 + f32Sub2 + f32Sub3
 *  function is not saturated
 *******************************************************************************/  
-static inline frac32_t MLIB_Sub4_F32_FCi(register frac32_t f32Min, register frac32_t f32Sub1, 
+RAM_FUNC_LIB 
+RTCESL_INLINE static inline frac32_t MLIB_Sub4_F32_FCi(register frac32_t f32Min, register frac32_t f32Sub1, 
                                          register frac32_t f32Sub2, register frac32_t f32Sub3)
 {
     return((frac32_t)(f32Min - f32Sub1 - f32Sub2 - f32Sub3)); 
