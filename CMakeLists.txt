@@ -3246,6 +3246,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_MacRnd_F32.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_MAU.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Mnac_A32.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Mnac_F16.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -3289,9 +3290,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Neg_F32.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Neg_F32_Asmi.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Rcp_A32.h
-            CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Rcp_A32_Asm.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Rcp1Q_A32.h
-            CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Rcp1Q_A32_Asm.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Rnd_F32.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Rnd_F32_Asmi.h
             CM23_RTCESL_4.9.0_KEIL/MLIB/Include/MLIB_Sat_A32.h
@@ -3426,6 +3425,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_MacRnd_F16_Asmi.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_MacRnd_F32.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_MacRnd_F32_Asmi.h
+	    CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_MAU.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Mnac_A32.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Mnac_F16.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Mnac_F16_Asmi.h
@@ -3469,9 +3469,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Neg_F32.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Neg_F32_Asmi.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Rcp_A32.h
-            CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Rcp_A32_Asm.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Rcp1Q_A32.h
-            CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Rcp1Q_A32_Asm.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Rnd_F32.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Rnd_F32_Asmi.h
             CM23_RTCESL_4.9.0_MCUX/MLIB/Include/MLIB_Sat_A32.h
