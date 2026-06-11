@@ -2932,11 +2932,11 @@ if (CONFIG_MCUX_COMPONENT_middleware.rtcesl.cm23)
 
     mcux_add_include(
         INCLUDES
-            CM23_RTCESL_4.9.0_MCUX/AMCLIB/Include
-            CM23_RTCESL_4.9.0_MCUX/GDFLIB/Include
-            CM23_RTCESL_4.9.0_MCUX/GFLIB/Include
-            CM23_RTCESL_4.9.0_MCUX/GMCLIB/Include
-            CM23_RTCESL_4.9.0_MCUX/MLIB/Include
+            CM23_RTCESL_4.9.0_IAR/AMCLIB/Include
+            CM23_RTCESL_4.9.0_IAR/GDFLIB/Include
+            CM23_RTCESL_4.9.0_IAR/GFLIB/Include
+            CM23_RTCESL_4.9.0_IAR/GMCLIB/Include
+            CM23_RTCESL_4.9.0_IAR/MLIB/Include
         TOOLCHAINS iar
         CORES cm23
     )
